@@ -1,7 +1,14 @@
 <section class="w-full min-h-[90vh] flex items-center pt-28 pb-12 relative overflow-hidden bg-[var(--color-mirloz-dark)]">
-  <!-- Video Background with Opacity and Gradient Overlay -->
+  <!-- Background: Image or Video -->
   <div class="absolute inset-0 pointer-events-none z-0">
-    {% if section.settings.video_url != blank %}
+    {% if section.settings.hero_image != blank %}
+      <img
+        src="{{ section.settings.hero_image | image_url: width: 1920 }}"
+        alt="{{ section.settings.hero_image.alt | default: 'Mirloz Hero' }}"
+        class="w-full h-full object-cover opacity-45"
+        loading="eager"
+      >
+    {% elsif section.settings.video_url != blank %}
       <video
         autoplay
         muted
@@ -15,7 +22,6 @@
     {% elsif section.settings.video_file != blank %}
       {{ section.settings.video_file | video_tag: autoplay: true, loop: true, muted: true, playsinline: true, class: 'w-full h-full object-cover opacity-45' }}
     {% else %}
-      <!-- Fallback video (local asset) -->
       <video
         autoplay
         muted
@@ -27,7 +33,6 @@
         <source src="{{ 'lv_0_20240812002521.mp4' | asset_url }}" type="video/mp4" />
       </video>
     {% endif %}
-    <!-- Soft gradient overlay: Darker on the left for text contrast, completely transparent on the right -->
     <div class="absolute inset-0 bg-gradient-to-r from-[var(--color-mirloz-dark)]/90 via-[var(--color-mirloz-dark)]/60 to-transparent"></div>
   </div>
 
@@ -190,14 +195,23 @@
       "label": "Floating Image 2 (Bottom-Left)"
     },
     {
+      "type": "header",
+      "content": "Fondo del Hero"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Imagen de fondo (prioridad sobre video)"
+    },
+    {
       "type": "text",
       "id": "video_url",
-      "label": "Video URL (External MP4 Link)"
+      "label": "Video URL (MP4 externo)"
     },
     {
       "type": "video",
       "id": "video_file",
-      "label": "Shopify Video File"
+      "label": "Video de Shopify"
     }
   ],
   "presets": [
