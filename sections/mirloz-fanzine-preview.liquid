@@ -1,6 +1,4 @@
-{{ 'mirloz-styles.css' | asset_url | stylesheet_tag }}
-
-<section id="FanzineSection-{{ section.id }}" class="w-full py-24 relative z-10 bg-[var(--color-mirloz-dark)] border-t border-[var(--color-mirloz-border)]">
+<section id="FanzineSection-{{ section.id }}" class="w-full py-24 relative z-10 bg-[var(--color-mirloz-dark)] border-t border-[var(--color-mirloz-border)] mirloz-fanzine-root">
   <div class="max-w-6xl mx-auto px-6">
     <!-- Header -->
     <div class="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-8 mb-16">
@@ -95,7 +93,7 @@
             class="fanzine-prev-btn w-10 h-10 border border-[var(--color-mirloz-border)] rounded-full flex items-center justify-center text-[var(--color-mirloz-cream)] opacity-30 hover:bg-[var(--color-mirloz-surface)] hover:border-[var(--color-mirloz-gold)] transition-all cursor-pointer"
             disabled
           >
-            <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"/></svg>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"/></svg>
           </button>
           <span class="font-mono text-xs text-[var(--color-mirloz-muted)]">
             <span class="current-page-num-counter">1</span> / {{ section.blocks.size }}
@@ -104,7 +102,7 @@
             class="fanzine-next-btn w-10 h-10 border border-[var(--color-mirloz-border)] rounded-full flex items-center justify-center text-[var(--color-mirloz-cream)] {% if section.blocks.size <= 1 %}opacity-30{% endif %} hover:bg-[var(--color-mirloz-surface)] hover:border-[var(--color-mirloz-gold)] transition-all cursor-pointer"
             {% if section.blocks.size <= 1 %}disabled{% endif %}
           >
-            <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
           </button>
         </div>
       </div>
@@ -149,74 +147,6 @@
     </div>
   </div>
 </section>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const container = document.getElementById('FanzineSection-{{ section.id }}');
-  if (!container) return;
-
-  const slides = container.querySelectorAll('.fanzine-page-slide');
-  const prevBtn = container.querySelector('.fanzine-prev-btn');
-  const nextBtn = container.querySelector('.fanzine-next-btn');
-  
-  const pageNumIndicator = container.querySelector('.current-page-num-indicator');
-  const pageNumLabel = container.querySelector('.current-page-num-label');
-  const pageNumCounter = container.querySelector('.current-page-num-counter');
-
-  let currentPage = 0;
-  const totalPages = {{ section.blocks.size }};
-
-  function updateFanzine() {
-    slides.forEach((slide, idx) => {
-      if (idx === currentPage) {
-        slide.classList.remove('opacity-0', 'pointer-events-none');
-        slide.classList.add('opacity-100', 'pointer-events-auto', 'active-slide');
-      } else {
-        slide.classList.remove('opacity-100', 'pointer-events-auto', 'active-slide');
-        slide.classList.add('opacity-0', 'pointer-events-none');
-      }
-    });
-
-    // Update buttons
-    prevBtn.disabled = currentPage === 0;
-    if (currentPage === 0) {
-      prevBtn.classList.add('opacity-30');
-    } else {
-      prevBtn.classList.remove('opacity-30');
-    }
-
-    nextBtn.disabled = currentPage === totalPages - 1;
-    if (currentPage === totalPages - 1) {
-      nextBtn.classList.add('opacity-30');
-    } else {
-      nextBtn.classList.remove('opacity-30');
-    }
-
-    // Update page numbers
-    const displayPage = currentPage + 1;
-    pageNumIndicator.textContent = displayPage;
-    pageNumLabel.textContent = displayPage;
-    pageNumCounter.textContent = displayPage;
-  }
-
-  prevBtn.addEventListener('click', () => {
-    if (currentPage > 0) {
-      currentPage--;
-      updateFanzine();
-    }
-  });
-
-  nextBtn.addEventListener('click', () => {
-    if (currentPage < totalPages - 1) {
-      currentPage++;
-      updateFanzine();
-    }
-  });
-
-  // Initial load
-  updateFanzine();
-});
-</script>
 
 {% schema %}
 {

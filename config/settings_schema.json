@@ -1,1 +1,101 @@
-[]
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Mirloz Coffee",
+    "theme_author": "Mirloz",
+    "theme_version": "1.0.0",
+    "theme_documentation_url": "https://mirloz.com",
+    "theme_support_email": "hola@mirloz.com"
+  },
+  {
+    "name": "Favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon"
+      }
+    ]
+  },
+  {
+    "name": "Colores",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Colores de marca"
+      },
+      {
+        "type": "color",
+        "id": "color_mirloz_dark",
+        "label": "Fondo oscuro",
+        "default": "#2B0D10"
+      },
+      {
+        "type": "color",
+        "id": "color_mirloz_cream",
+        "label": "Texto claro",
+        "default": "#F5E6D3"
+      },
+      {
+        "type": "color",
+        "id": "color_mirloz_gold",
+        "label": "Acento dorado",
+        "default": "#C4A265"
+      },
+      {
+        "type": "color",
+        "id": "color_mirloz_gold_light",
+        "label": "Dorado claro",
+        "default": "#D4B87A"
+      },
+      {
+        "type": "color",
+        "id": "color_mirloz_muted",
+        "label": "Texto atenuado",
+        "default": "#A89480"
+      },
+      {
+        "type": "color",
+        "id": "color_mirloz_surface",
+        "label": "Superficie",
+        "default": "#1A0A0C"
+      },
+      {
+        "type": "color",
+        "id": "color_mirloz_border",
+        "label": "Borde",
+        "default": "#3A2025"
+      },
+      {
+        "type": "color",
+        "id": "color_mirloz_green",
+        "label": "Verde",
+        "default": "#4A7C59"
+      }
+    ]
+  },
+  {
+    "name": "Redes Sociales",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Enlaces sociales"
+      },
+      {
+        "type": "url",
+        "id": "social_instagram",
+        "label": "Instagram"
+      },
+      {
+        "type": "url",
+        "id": "social_twitter",
+        "label": "X (Twitter)"
+      },
+      {
+        "type": "url",
+        "id": "social_tiktok",
+        "label": "TikTok"
+      }
+    ]
+  }
+]

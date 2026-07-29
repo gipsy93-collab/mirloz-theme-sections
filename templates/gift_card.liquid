@@ -1,0 +1,45 @@
+<div class="max-w-2xl mx-auto px-6 py-24">
+  <div class="bg-[var(--color-mirloz-surface)] border border-[var(--color-mirloz-border)] rounded-lg p-8 md:p-12">
+    <div class="text-center mb-8">
+      <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-[var(--color-mirloz-gold)] mb-4">MIRLOZ</p>
+      <h1 class="font-serif text-3xl md:text-4xl font-medium text-[var(--color-mirloz-cream)] mb-4">
+        {{ 'gift_cards.issued.subtitle' | t }}
+      </h1>
+      <p class="text-[var(--color-mirloz-muted)] text-sm font-sans">
+        {{ 'gift_cards.issued.redeem' | t }}
+      </p>
+    </div>
+
+    <div class="bg-[var(--color-mirloz-dark)] border border-[var(--color-mirloz-border)] rounded p-6 mb-8">
+      {% if gift_card.expired %}
+        <p class="text-center text-[var(--color-mirloz-muted)] font-mono text-sm">{{ 'gift_cards.issued.expired' | t }}</p>
+      {% else %}
+        <div class="text-center space-y-4">
+          <div class="font-serif text-4xl md:text-5xl text-[var(--color-mirloz-gold)]">
+            {{ gift_card.initial_value | money }}
+          </div>
+          <p class="font-mono text-xs text-[var(--color-mirloz-muted)] tracking-[0.1em] uppercase">
+            {{ gift_card.code }}
+          </p>
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="text-center">
+      <a
+        href="{{ shop.url }}"
+        class="inline-flex items-center gap-2 bg-[var(--color-mirloz-gold)] hover:bg-[var(--color-mirloz-gold-light)] text-[var(--color-mirloz-dark)] font-bold px-8 py-4 transition-all no-underline font-mono text-xs tracking-[0.15em] uppercase"
+      >
+        {{ 'gift_cards.issued.shop_link' | t }}
+      </a>
+    </div>
+
+    {% if gift_card.pass_url %}
+      <div class="text-center mt-4">
+        <a href="{{ gift_card.pass_url }}" class="font-mono text-xs text-[var(--color-mirloz-gold)] no-underline hover:text-[var(--color-mirloz-gold-light)]">
+          {{ 'gift_cards.issued.add_to_apple_wallet' | t }}
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</div>

@@ -7,6 +7,13 @@
     <meta name="theme-color" content="#2B0D10">
     <link rel="canonical" href="{{ canonical_url }}">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    {% if settings.favicon != blank %}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    {% endif %}
+
     <title>{{ page_title }}</title>
 
     {% if page_description %}
@@ -15,13 +22,16 @@
 
     {{ content_for_header }}
 
-    <!-- Mirloz Compiled Tailwind CSS -->
     {{ 'mirloz-styles.css' | asset_url | stylesheet_tag }}
+    {{ 'mirloz-fanzine.js' | asset_url | script_tag }}
   </head>
 
   <body class="bg-[var(--color-mirloz-dark)] text-[var(--color-mirloz-cream)] min-h-screen font-sans selection:bg-[var(--color-mirloz-gold)] selection:text-[var(--color-mirloz-dark)]">
+    <a href="#MainContent" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-[var(--color-mirloz-gold)] focus:text-[var(--color-mirloz-dark)] focus:px-6 focus:py-3 focus:font-bold focus:no-underline">
+      {{ 'accessibility.skip_to_content' | t }}
+    </a>
     {% section 'mirloz-header' %}
-    <main id="MainContent" class="focus:none" role="main" tabindex="-1">
+    <main id="MainContent" role="main" tabindex="-1">
       {{ content_for_layout }}
     </main>
   </body>

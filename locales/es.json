@@ -1,0 +1,114 @@
+{
+  "accessibility": {
+    "skip_to_content": "Saltar al contenido",
+    "main_navigation": "Navegación principal"
+  },
+  "general": {
+    "404": {
+      "title": "Página no encontrada",
+      "subtext": "La página que buscas no existe o ha sido movida.",
+      "button": "Volver al inicio"
+    },
+    "password": {
+      "title": "Próximamente",
+      "subtext": "Estamos trabajando en algo especial. Vuelve pronto.",
+      "placeholder": "Contraseña",
+      "button": "Entrar",
+      "error": "Contraseña incorrecta"
+    },
+    "cart": {
+      "title": "Tu Carrito",
+      "empty": "Tu carrito está vacío",
+      "continue": "Seguir Comprando",
+      "checkout": "Finalizar Pedido",
+      "remove": "Eliminar",
+      "quantity": "Cantidad",
+      "subtotal": "Subtotal"
+    },
+    "product": {
+      "sold_out": "Agotado",
+      "add_to_cart": "Añadir al Carrito",
+      "unavailable": "No disponible"
+    },
+    "blog": {
+      "read_more": "Seguir leyendo",
+      "posted_on": "Publicado el",
+      "back_to_blog": "Volver al blog",
+      "no_articles": "Aún no hay artículos publicados."
+    },
+    "collection": {
+      "no_products": "No hay productos en esta colección."
+    },
+    "search": {
+      "title": "Búsqueda",
+      "placeholder": "Buscar...",
+      "button": "Buscar",
+      "no_results": "No se encontraron resultados para \"{{ terms }}\".",
+      "results_for": "Resultados para \"{{ terms }}\""
+    },
+    "customer": {
+      "login": {
+        "title": "Iniciar Sesión",
+        "email": "Correo electrónico",
+        "password": "Contraseña",
+        "submit": "Ingresar",
+        "forgot_password": "¿Olvidaste tu contraseña?",
+        "register_cta": "Crear cuenta",
+        "guest_cta": "Continuar como invitado"
+      },
+      "register": {
+        "title": "Crear Cuenta",
+        "first_name": "Nombre",
+        "last_name": "Apellido",
+        "email": "Correo electrónico",
+        "password": "Contraseña",
+        "submit": "Crear Cuenta",
+        "login_cta": "¿Ya tienes cuenta? Inicia sesión"
+      },
+      "account": {
+        "title": "Mi Cuenta",
+        "welcome": "Hola, {{ name }}",
+        "order_history": "Historial de Pedidos",
+        "no_orders": "Aún no has realizado ningún pedido.",
+        "logout": "Cerrar Sesión",
+        "addresses": "Mis Direcciones"
+      },
+      "order": {
+        "title": "Pedido {{ order_name }}",
+        "date": "Fecha",
+        "status": "Estado",
+        "fulfillment": "Cumplimiento",
+        "product": "Producto",
+        "price": "Precio",
+        "quantity": "Cantidad",
+        "total": "Total",
+        "shipping_address": "Dirección de envío",
+        "billing_address": "Dirección de facturación"
+      },
+      "addresses": {
+        "title": "Mis Direcciones",
+        "add": "Añadir Dirección",
+        "edit": "Editar",
+        "delete": "Eliminar",
+        "default": "Predeterminada",
+        "no_addresses": "No tienes direcciones guardadas."
+      },
+      "reset_password": {
+        "title": "Restablecer Contraseña",
+        "email": "Correo electrónico",
+        "submit": "Enviar instrucciones",
+        "cancel": "Cancelar",
+        "new_password": "Nueva contraseña",
+        "confirm_password": "Confirmar contraseña",
+        "update": "Actualizar contraseña"
+      },
+      "activate_account": {
+        "title": "Activar Cuenta",
+        "password": "Contraseña",
+        "confirm": "Confirmar contraseña",
+        "submit": "Activar Cuenta",
+        "decline": "Rechazar invitación"
+      }
+    }
+  }
+}

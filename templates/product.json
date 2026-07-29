@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "product-main": {
+      "type": "main-product",
+      "settings": {}
+    }
+  },
+  "order": [
+    "product-main"
+  ]
+}

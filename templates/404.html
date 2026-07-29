@@ -1,0 +1,15 @@
+<div class="max-w-2xl mx-auto px-6 py-32 text-center">
+  <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-[var(--color-mirloz-gold)] mb-6">Error 404</p>
+  <h1 class="font-serif text-4xl md:text-6xl font-medium text-[var(--color-mirloz-cream)] mb-6">
+    {{ 'general.404.title' | t }}
+  </h1>
+  <p class="text-[var(--color-mirloz-muted)] text-lg mb-10 font-sans">
+    {{ 'general.404.subtext' | t }}
+  </p>
+  <a
+    href="{{ routes.root_url }}"
+    class="inline-flex items-center gap-2 bg-[var(--color-mirloz-gold)] hover:bg-[var(--color-mirloz-gold-light)] text-[var(--color-mirloz-dark)] font-bold px-8 py-4 transition-all no-underline font-mono text-xs tracking-[0.15em] uppercase"
+  >
+    {{ 'general.404.button' | t }}
+  </a>
+</div>
