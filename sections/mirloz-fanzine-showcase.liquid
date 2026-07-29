@@ -1,0 +1,179 @@
+{{ 'mirloz-styles.css' | asset_url | stylesheet_tag }}
+
+<section id="FanzineShowcase-{{ section.id }}" class="w-full py-24 relative z-10 bg-[var(--color-mirloz-dark)] border-t border-[var(--color-mirloz-border)]">
+  <div class="max-w-6xl mx-auto px-6">
+    
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-[var(--color-mirloz-gold)] mb-4">
+        {{ section.settings.badge_text }}
+      </p>
+      <h2 class="font-serif text-4xl md:text-5xl font-medium text-[var(--color-mirloz-cream)]">
+        {{ section.settings.heading }}
+      </h2>
+      {% if section.settings.subheading != blank %}
+        <p class="text-sm text-[var(--color-mirloz-muted)] mt-4 max-w-lg mx-auto font-sans leading-relaxed">
+          {{ section.settings.subheading }}
+        </p>
+      {% endif %}
+    </div>
+
+    <!-- Volumes Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      {% for block in section.blocks %}
+        <div class="group bg-[var(--color-mirloz-surface)] border border-[var(--color-mirloz-border)] hover:border-[var(--color-mirloz-gold)]/40 rounded-lg overflow-hidden transition-all duration-300 flex flex-col justify-between" {{ block.shopify_attributes }}>
+          <div>
+            <!-- Volume Cover Image -->
+            <div class="relative aspect-[3/4] bg-black/30 overflow-hidden border-b border-[var(--color-mirloz-border)]">
+              {% if block.settings.cover_image != blank %}
+                <img
+                  src="{{ block.settings.cover_image | image_url: width: 600 }}"
+                  alt="{{ block.settings.title }}"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+              {% else %}
+                <div class="w-full h-full flex flex-col items-center justify-center p-8 text-center font-mono">
+                  <span class="text-4xl opacity-40 mb-3">📖</span>
+                  <span class="text-xs text-[var(--color-mirloz-muted)]">[Sin imagen de portada]</span>
+                </div>
+              {% endif %}
+              <!-- Badge overlay -->
+              <div class="absolute top-4 left-4 bg-[var(--color-mirloz-gold)] text-[var(--color-mirloz-dark)] font-mono text-[9px] tracking-[0.1em] uppercase px-3 py-1 font-bold rounded-sm">
+                {{ block.settings.edition_label }}
+              </div>
+            </div>
+
+            <!-- Volume Info -->
+            <div class="p-6">
+              <span class="font-mono text-[9px] tracking-[0.15em] text-[var(--color-mirloz-gold)] uppercase block mb-2">
+                {{ block.settings.topic }}
+              </span>
+              <h3 class="font-serif text-2xl font-medium text-[var(--color-mirloz-cream)] mb-3 group-hover:text-[var(--color-mirloz-gold)] transition-colors">
+                {{ block.settings.title }}
+              </h3>
+              <p class="text-sm text-[var(--color-mirloz-muted)] leading-relaxed font-sans mb-4">
+                {{ block.settings.description }}
+              </p>
+            </div>
+          </div>
+
+          <!-- Action Button / Link -->
+          <div class="p-6 pt-0">
+            {% if block.settings.link_url != blank %}
+              <a
+                href="{{ block.settings.link_url }}"
+                class="inline-flex items-center gap-1.5 font-mono text-xs text-[var(--color-mirloz-gold)] hover:text-[var(--color-mirloz-gold-light)] transition-colors no-underline"
+                target="_blank"
+              >
+                {{ block.settings.link_text }}
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </a>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Mirloz Fanzine Showcase",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "La Colección"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Vitrina de Fanzines"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Explora los diferentes volúmenes que hemos editado. Ciencia, arte y cultura general para acompañar tus tazas diarias."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "fanzine_volume",
+      "name": "Fanzine Volume",
+      "settings": [
+        {
+          "type": "text",
+          "id": "edition_label",
+          "label": "Edition Label",
+          "default": "Volumen I"
+        },
+        {
+          "type": "text",
+          "id": "topic",
+          "label": "Topic / Theme",
+          "default": "Neurociencia & Química"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "La Ciencia Detrás del Café"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Una exploración profunda sobre cómo la cafeína altera los receptores cerebrales y cómo la química de Maillard carameliza los granos."
+        },
+        {
+          "type": "image_picker",
+          "id": "cover_image",
+          "label": "Cover Image"
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "Link Text",
+          "default": "Leer Previsualización (PDF)"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mirloz Fanzine Showcase",
+      "blocks": [
+        {
+          "type": "fanzine_volume",
+          "settings": {
+            "edition_label": "Volumen I",
+            "topic": "Química y Neurociencia",
+            "title": "La Ciencia del Café",
+            "description": "El volumen de lanzamiento que acompaña las primeras 50 unidades. Analizamos la cafeína y la caramelización estelar."
+          }
+        },
+        {
+          "type": "fanzine_volume",
+          "settings": {
+            "edition_label": "Volumen II",
+            "topic": "Astronomía y Física",
+            "title": "Cuerpos Celestes y Calor",
+            "description": "Exploramos las similitudes termodinámicas entre el núcleo de las enanas rojas y la física térmica en tu taza de café."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

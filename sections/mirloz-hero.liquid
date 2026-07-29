@@ -1,0 +1,212 @@
+{{ 'mirloz-styles.css' | asset_url | stylesheet_tag }}
+
+<section class="w-full min-h-[90vh] flex items-center pt-28 pb-12 relative overflow-hidden bg-[var(--color-mirloz-dark)]">
+  <!-- Video Background with Opacity and Gradient Overlay -->
+  <div class="absolute inset-0 pointer-events-none z-0">
+    {% if section.settings.video_url != blank %}
+      <video
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+        class="w-full h-full object-cover opacity-45"
+      >
+        <source src="{{ section.settings.video_url }}" type="video/mp4" />
+      </video>
+    {% elsif section.settings.video_file != blank %}
+      {{ section.settings.video_file | video_tag: autoplay: true, loop: true, muted: true, playsinline: true, class: 'w-full h-full object-cover opacity-45' }}
+    {% else %}
+      <!-- Fallback video (local asset) -->
+      <video
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+        class="w-full h-full object-cover opacity-45"
+      >
+        <source src="{{ 'lv_0_20240812002521.mp4' | asset_url }}" type="video/mp4" />
+      </video>
+    {% endif %}
+    <!-- Soft gradient overlay: Darker on the left for text contrast, completely transparent on the right -->
+    <div class="absolute inset-0 bg-gradient-to-r from-[var(--color-mirloz-dark)]/90 via-[var(--color-mirloz-dark)]/60 to-transparent"></div>
+  </div>
+
+  <div class="max-w-6xl mx-auto px-6 w-full flex flex-col md:flex-row items-center justify-between gap-12 relative z-10">
+    <!-- Left Content -->
+    <div class="flex-1 flex flex-col items-start justify-center z-10 w-full">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="font-mono text-[11px] tracking-[0.2em] uppercase text-[var(--color-mirloz-gold)]">
+          {{ section.settings.badge_text }}
+        </span>
+        <div class="w-10 h-[1.5px] bg-[var(--color-mirloz-gold)]/50"></div>
+      </div>
+
+      <h1 class="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-medium leading-[0.9] tracking-tight text-[var(--color-mirloz-cream)] mb-6">
+        {{ section.settings.heading }}
+      </h1>
+
+      <div class="text-lg md:text-xl text-[var(--color-mirloz-muted)] mb-10 max-w-md font-sans leading-relaxed">
+        {{ section.settings.text }}
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-4">
+        {% if section.settings.button_1_link != blank %}
+          <a
+            href="{{ section.settings.button_1_link }}"
+            class="flex items-center justify-center gap-2 bg-[var(--color-mirloz-gold)] hover:bg-[var(--color-mirloz-gold-light)] text-[var(--color-mirloz-dark)] font-bold px-8 py-4 transition-all hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(196,162,101,0.25)] no-underline"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+            {{ section.settings.button_1_text }}
+          </a>
+        {% endif %}
+        {% if section.settings.button_2_link != blank %}
+          <a
+            href="{{ section.settings.button_2_link }}"
+            class="flex items-center justify-center gap-2 border border-[var(--color-mirloz-border)] hover:border-[var(--color-mirloz-gold)] hover:text-[var(--color-mirloz-gold)] text-[var(--color-mirloz-cream)] font-medium px-8 py-4 transition-all hover:bg-[var(--color-mirloz-surface)] no-underline"
+          >
+            {{ section.settings.button_2_text }}
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+          </a>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- Right Content - Product Visual -->
+    <div class="flex-1 relative w-full h-[50vh] md:h-[80vh] flex items-center justify-center pointer-events-none">
+      <!-- Glow effect -->
+      <div class="absolute w-[60%] h-[60%] bg-[var(--color-mirloz-gold)]/15 rounded-full blur-[120px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+
+      <div class="relative z-10 w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-[var(--color-mirloz-gold)]/20 shadow-2xl pointer-events-auto">
+        {% if section.settings.product_image != blank %}
+          <img
+            src="{{ section.settings.product_image | image_url: width: 800 }}"
+            alt="{{ section.settings.product_image.alt | default: 'Mirloz' }}"
+            class="w-full h-full object-cover scale-110"
+            loading="eager"
+          />
+        {% else %}
+          <img
+            src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&q=80&w=800&h=800"
+            alt="Mirloz - Café colombiano"
+            class="w-full h-full object-cover scale-110"
+            loading="eager"
+          />
+        {% endif %}
+      </div>
+
+      <!-- Small floating elements -->
+      <div class="absolute top-[20%] right-[5%] w-16 h-16 rounded-full overflow-hidden border-2 border-[var(--color-mirloz-gold)]/20 shadow-lg">
+        {% if section.settings.floating_image_1 != blank %}
+          <img
+            src="{{ section.settings.floating_image_1 | image_url: width: 150 }}"
+            alt="Granos de café"
+            class="w-full h-full object-cover"
+          />
+        {% else %}
+          <img
+            src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&q=80&w=150&h=150"
+            class="w-full h-full object-cover"
+            alt="Granos de café"
+          />
+        {% endif %}
+      </div>
+
+      <div class="absolute bottom-[15%] left-[5%] w-20 h-20 rounded-full overflow-hidden border-2 border-[var(--color-mirloz-green)]/20 shadow-lg">
+        {% if section.settings.floating_image_2 != blank %}
+          <img
+            src="{{ section.settings.floating_image_2 | image_url: width: 150 }}"
+            alt="Taza de café"
+            class="w-full h-full object-cover"
+          />
+        {% else %}
+          <img
+            src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&q=80&w=150&h=150"
+            class="w-full h-full object-cover"
+            alt="Taza de café"
+          />
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Mirloz Hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "Edición Limitada — 50 Unidades"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "EL CANTO DE LA CURIOSIDAD"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Description Text",
+      "default": "Café de especialidad colombiano. Inspirado en el canto y la agudeza del mirlo, cada empaque negro profundo esconde un pico de luz científica en forma de fanzine."
+    },
+    {
+      "type": "text",
+      "id": "button_1_text",
+      "label": "Primary Button Text",
+      "default": "Reservar Ahora (250g)"
+    },
+    {
+      "type": "url",
+      "id": "button_1_link",
+      "label": "Primary Button Link"
+    },
+    {
+      "type": "text",
+      "id": "button_2_text",
+      "label": "Secondary Button Text",
+      "default": "Nuestra Metáfora"
+    },
+    {
+      "type": "url",
+      "id": "button_2_link",
+      "label": "Secondary Button Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image",
+      "label": "Main Package Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "floating_image_1",
+      "label": "Floating Image 1 (Top-Right)"
+    },
+    {
+      "type": "image_picker",
+      "id": "floating_image_2",
+      "label": "Floating Image 2 (Bottom-Left)"
+    },
+    {
+      "type": "text",
+      "id": "video_url",
+      "label": "Video URL (External MP4 Link)"
+    },
+    {
+      "type": "video",
+      "id": "video_file",
+      "label": "Shopify Video File"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mirloz Hero",
+      "category": "Image with text"
+    }
+  ]
+}
+{% endschema %}

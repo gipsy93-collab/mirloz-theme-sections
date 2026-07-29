@@ -1,0 +1,184 @@
+{{ 'mirloz-styles.css' | asset_url | stylesheet_tag }}
+
+<section id="CtaSection-{{ section.id }}" class="w-full py-24 relative z-10 border-t border-[var(--color-mirloz-border)]">
+  <div class="absolute inset-0 bg-[var(--color-mirloz-gold)]/5"></div>
+  <div class="absolute w-[60%] h-[60%] bg-[var(--color-mirloz-gold)]/8 rounded-full blur-[120px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+
+  <div class="relative text-center max-w-3xl mx-auto px-6">
+    <div>
+      <span class="inline-block font-mono text-[10px] tracking-[0.2em] uppercase bg-[var(--color-mirloz-gold)]/15 text-[var(--color-mirloz-gold)] px-4 py-1.5 mb-6 border border-[var(--color-mirloz-gold)]/20">
+        {{ section.settings.badge_text }}
+      </span>
+      <h2 class="font-serif text-5xl md:text-6xl lg:text-7xl font-medium text-[var(--color-mirloz-cream)] leading-[1] mb-6">
+        {{ section.settings.heading }}
+      </h2>
+      <div class="text-[var(--color-mirloz-muted)] text-base max-w-lg mx-auto mb-10 font-sans leading-relaxed">
+        {{ section.settings.text }}
+      </div>
+
+      <!-- Price + Shopify Native Add to Cart Form -->
+      {%- assign selected_product = all_products[section.settings.product_id] -%}
+      {%- if selected_product != blank -%}
+        
+        <div class="flex flex-col items-center gap-3 mb-8">
+          <div class="flex items-baseline gap-3">
+            <span class="font-serif text-5xl text-[var(--color-mirloz-cream)]">
+              {{ selected_product.price | money }}
+            </span>
+            {% if selected_product.compare_at_price > selected_product.price %}
+              <span class="text-xl text-[var(--color-mirloz-muted)] line-through">
+                {{ selected_product.compare_at_price | money }}
+              </span>
+            {% endif %}
+            <span class="font-mono text-[10px] text-[var(--color-mirloz-gold)] tracking-[0.1em] border border-[var(--color-mirloz-gold)]/20 px-2 py-0.5">
+              {{ section.settings.promo_label }}
+            </span>
+          </div>
+        </div>
+
+        {%- form 'product', selected_product, class: 'inline-flex flex-col items-center' -%}
+          <!-- Hidden variant selector (grabs the first available variant) -->
+          <input type="hidden" name="id" value="{{ selected_product.selected_or_first_available_variant.id }}">
+          
+          {%- if selected_product.available -%}
+            <button
+              type="submit"
+              class="inline-flex items-center gap-2 bg-[var(--color-mirloz-gold)] hover:bg-[var(--color-mirloz-gold-light)] text-[var(--color-mirloz-dark)] font-bold px-10 py-5 transition-all hover:scale-105 active:scale-95 shadow-[0_0_35px_rgba(196,162,101,0.3)] font-mono text-xs tracking-[0.15em] uppercase rounded cursor-pointer"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+              {{ section.settings.button_text }}
+            </button>
+          {%- else -%}
+            <button
+              disabled
+              class="inline-flex items-center gap-2 bg-[var(--color-mirloz-border)] text-[var(--color-mirloz-muted)] font-bold px-10 py-5 font-mono text-xs tracking-[0.15em] uppercase rounded cursor-not-allowed"
+            >
+              Agotado
+            </button>
+          {%- endif -%}
+        {%- endform -%}
+
+      {%- else -%}
+        <!-- Fallback if no product is selected -->
+        <div class="flex flex-col items-center gap-3 mb-8">
+          <div class="flex items-baseline gap-3">
+            <span class="font-serif text-5xl text-[var(--color-mirloz-cream)]">&euro;9,00</span>
+            <span class="text-xl text-[var(--color-mirloz-muted)] line-through">&euro;11,00</span>
+            <span class="font-mono text-[10px] text-[var(--color-mirloz-gold)] tracking-[0.1em] border border-[var(--color-mirloz-gold)]/20 px-2 py-0.5">
+              OFERTA DE LANZAMIENTO
+            </span>
+          </div>
+        </div>
+        
+        <a
+          href="#"
+          class="inline-flex items-center gap-2 bg-[var(--color-mirloz-gold)] hover:bg-[var(--color-mirloz-gold-light)] text-[var(--color-mirloz-dark)] font-bold px-10 py-5 transition-all hover:scale-105 active:scale-95 shadow-[0_0_35px_rgba(196,162,101,0.3)] no-underline font-mono text-xs tracking-[0.15em] uppercase rounded"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          Reservar Bolsa (Sin Producto Vinculado)
+        </a>
+      {%- endif -%}
+    </div>
+
+    <!-- Trust row -->
+    <div class="flex flex-wrap gap-6 justify-center mt-12 pt-8 border-t border-[var(--color-mirloz-border)]">
+      {% if section.settings.trust_1 != blank %}
+        <span class="font-mono text-[10px] tracking-[0.1em] uppercase text-[var(--color-mirloz-muted)] flex items-center gap-2">
+          <span class="text-[var(--color-mirloz-gold)] text-xs">&#10003;</span>
+          {{ section.settings.trust_1 }}
+        </span>
+      {% endif %}
+      {% if section.settings.trust_2 != blank %}
+        <span class="font-mono text-[10px] tracking-[0.1em] uppercase text-[var(--color-mirloz-muted)] flex items-center gap-2">
+          <span class="text-[var(--color-mirloz-gold)] text-xs">&#10003;</span>
+          {{ section.settings.trust_2 }}
+        </span>
+      {% endif %}
+      {% if section.settings.trust_3 != blank %}
+        <span class="font-mono text-[10px] tracking-[0.1em] uppercase text-[var(--color-mirloz-muted)] flex items-center gap-2">
+          <span class="text-[var(--color-mirloz-gold)] text-xs">&#10003;</span>
+          {{ section.settings.trust_3 }}
+        </span>
+      {% endif %}
+      {% if section.settings.trust_4 != blank %}
+        <span class="font-mono text-[10px] tracking-[0.1em] uppercase text-[var(--color-mirloz-muted)] flex items-center gap-2">
+          <span class="text-[var(--color-mirloz-gold)] text-xs">&#10003;</span>
+          {{ section.settings.trust_4 }}
+        </span>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Mirloz Call to Action",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "Primer Vuelo: Solo 50 unidades de 250g"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "DESPIERTA TU VUELO INTELECTUAL"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Description Text",
+      "default": "Llévate una de las 50 bolsas del primer lote. Café de especialidad colombiano con el primer fanzine científico físico de regalo para acompañar tus mañanas de asombro."
+    },
+    {
+      "type": "product",
+      "id": "product_id",
+      "label": "Select Product"
+    },
+    {
+      "type": "text",
+      "id": "promo_label",
+      "label": "Promotion Label",
+      "default": "OFERTA DE LANZAMIENTO"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Añadir al Carrito"
+    },
+    {
+      "type": "text",
+      "id": "trust_1",
+      "label": "Trust Line 1",
+      "default": "Pago SSL Seguro"
+    },
+    {
+      "type": "text",
+      "id": "trust_2",
+      "label": "Trust Line 2",
+      "default": "Shopify Checkout"
+    },
+    {
+      "type": "text",
+      "id": "trust_3",
+      "label": "Trust Line 3",
+      "default": "Envío Peninsular España"
+    },
+    {
+      "type": "text",
+      "id": "trust_4",
+      "label": "Trust Line 4",
+      "default": "Garantía de Satisfacción"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mirloz Call to Action",
+      "category": "Call to Action"
+    }
+  ]
+}
+{% endschema %}

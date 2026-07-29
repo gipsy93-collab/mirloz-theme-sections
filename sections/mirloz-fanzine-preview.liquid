@@ -1,0 +1,392 @@
+{{ 'mirloz-styles.css' | asset_url | stylesheet_tag }}
+
+<section id="FanzineSection-{{ section.id }}" class="w-full py-24 relative z-10 bg-[var(--color-mirloz-dark)] border-t border-[var(--color-mirloz-border)]">
+  <div class="max-w-6xl mx-auto px-6">
+    <!-- Header -->
+    <div class="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-8 mb-16">
+      <div>
+        <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-[var(--color-mirloz-gold)] mb-4">
+          {{ section.settings.badge_text }}
+        </p>
+        <h2 class="font-serif text-3xl md:text-5xl font-medium text-[var(--color-mirloz-cream)] leading-[1.1]">
+          {{ section.settings.heading }}
+        </h2>
+      </div>
+
+      <div class="self-end">
+        <p class="font-mono text-[10px] tracking-[0.12em] uppercase text-[var(--color-mirloz-muted)] mb-4 leading-relaxed">
+          {{ section.settings.description_accent }}
+        </p>
+        <div class="flex flex-wrap gap-2">
+          {% if section.settings.tag_1 != blank %}
+            <span class="font-mono text-[9px] tracking-[0.1em] uppercase px-3 py-1.5 border border-[var(--color-mirloz-border)] text-[var(--color-mirloz-muted)] hover:border-[var(--color-mirloz-gold)] hover:text-[var(--color-mirloz-gold)] transition-colors cursor-pointer">
+              {{ section.settings.tag_1 }}
+            </span>
+          {% endif %}
+          {% if section.settings.tag_2 != blank %}
+            <span class="font-mono text-[9px] tracking-[0.1em] uppercase px-3 py-1.5 border border-[var(--color-mirloz-border)] text-[var(--color-mirloz-muted)] hover:border-[var(--color-mirloz-gold)] hover:text-[var(--color-mirloz-gold)] transition-colors cursor-pointer">
+              {{ section.settings.tag_2 }}
+            </span>
+          {% endif %}
+          {% if section.settings.tag_3 != blank %}
+            <span class="font-mono text-[9px] tracking-[0.1em] uppercase px-3 py-1.5 border border-[var(--color-mirloz-border)] text-[var(--color-mirloz-muted)] hover:border-[var(--color-mirloz-gold)] hover:text-[var(--color-mirloz-gold)] transition-colors cursor-pointer">
+              {{ section.settings.tag_3 }}
+            </span>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <!-- Interactive Fanzine & Chapters Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <!-- Left: Interactive Fanzine Book Viewer (7 cols) -->
+      <div class="lg:col-span-7 flex flex-col items-center">
+        <p class="font-mono text-[10px] text-[var(--color-mirloz-gold)] mb-4 flex items-center gap-2">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.168.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+          PREVISUALIZA EL FANZINE (PÁGINA <span class="current-page-num-indicator">1</span> DE {{ section.blocks.size }})
+        </p>
+
+        <!-- Book Frame -->
+        <div class="w-full max-w-lg aspect-[3/4] bg-[var(--color-mirloz-surface)] border-2 border-[var(--color-mirloz-border)] rounded-lg p-8 relative shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col justify-between overflow-hidden">
+          <!-- Spine Effect -->
+          <div class="absolute left-0 top-0 bottom-0 w-4 bg-gradient-to-r from-black/50 via-transparent to-transparent border-r border-white/5"></div>
+          
+          <!-- Content Container -->
+          <div class="fanzine-pages-container flex-1 flex flex-col justify-between py-2 relative">
+            {% for block in section.blocks %}
+              <div class="fanzine-page-slide absolute inset-0 flex flex-col justify-between transition-all duration-300 opacity-0 pointer-events-none {% if forloop.first %}opacity-100 pointer-events-auto active-slide{% endif %}" data-index="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+                <div>
+                  <span class="font-mono text-[9px] tracking-[0.15em] text-[var(--color-mirloz-gold)] uppercase flex items-center gap-1.5 mb-2">
+                    <svg class="w-3 h-3 text-[var(--color-mirloz-gold)]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.286L13 21l-2.286-6.857L5 12l5.714-2.286L13 3z"/></svg>
+                    {{ block.settings.subtitle }}
+                  </span>
+                  <h3 class="font-serif text-3xl font-medium text-[var(--color-mirloz-cream)] mb-4">
+                    {{ block.settings.title }}
+                  </h3>
+                  <p class="text-sm md:text-base text-[var(--color-mirloz-muted)] leading-relaxed mb-6 font-sans">
+                    {{ block.settings.content }}
+                  </p>
+                </div>
+
+                <!-- Illustration / Widget Area -->
+                <div class="fanzine-page-illustration w-full h-36">
+                  {% if block.settings.illustration_image != blank %}
+                    <img src="{{ block.settings.illustration_image | image_url: width: 400 }}" alt="{{ block.settings.title }}" class="w-full h-full object-cover rounded border border-[var(--color-mirloz-border)]" />
+                  {% else %}
+                    <div class="w-full h-full flex items-center justify-center bg-black/40 border border-[var(--color-mirloz-border)] rounded text-xs font-mono text-[var(--color-mirloz-muted)] p-4">
+                      {{ block.settings.illustration_html }}
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+
+          <!-- Book footer -->
+          <div class="flex justify-between items-center pt-4 border-t border-[var(--color-mirloz-border)] mt-4 font-mono text-[10px] text-[var(--color-mirloz-muted)]">
+            <span>{{ section.settings.book_footer_left }}</span>
+            <span>Pág. <span class="current-page-num-label">1</span></span>
+          </div>
+        </div>
+
+        <!-- Navigation buttons -->
+        <div class="flex items-center gap-4 mt-6">
+          <button
+            class="fanzine-prev-btn w-10 h-10 border border-[var(--color-mirloz-border)] rounded-full flex items-center justify-center text-[var(--color-mirloz-cream)] opacity-30 hover:bg-[var(--color-mirloz-surface)] hover:border-[var(--color-mirloz-gold)] transition-all cursor-pointer"
+            disabled
+          >
+            <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"/></svg>
+          </button>
+          <span class="font-mono text-xs text-[var(--color-mirloz-muted)]">
+            <span class="current-page-num-counter">1</span> / {{ section.blocks.size }}
+          </span>
+          <button
+            class="fanzine-next-btn w-10 h-10 border border-[var(--color-mirloz-border)] rounded-full flex items-center justify-center text-[var(--color-mirloz-cream)] {% if section.blocks.size <= 1 %}opacity-30{% endif %} hover:bg-[var(--color-mirloz-surface)] hover:border-[var(--color-mirloz-gold)] transition-all cursor-pointer"
+            {% if section.blocks.size <= 1 %}disabled{% endif %}
+          >
+            <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Right: Intro / Summary (5 cols) -->
+      <div class="lg:col-span-5 space-y-6">
+        <h3 class="font-serif text-2xl text-[var(--color-mirloz-cream)]">
+          {{ section.settings.right_heading }}
+        </h3>
+        <div class="text-[var(--color-mirloz-muted)] text-sm leading-relaxed font-sans">
+          {{ section.settings.right_text }}
+        </div>
+        
+        <!-- Action Cards/List -->
+        <div class="space-y-4 pt-2">
+          {% if section.settings.feature_1_title != blank %}
+            <div class="flex gap-4 items-start p-4 bg-[var(--color-mirloz-surface)] border border-[var(--color-mirloz-border)] rounded hover:border-[var(--color-mirloz-gold)]/30 transition-colors">
+              <span class="text-2xl mt-1">{{ section.settings.feature_1_icon }}</span>
+              <div>
+                <h4 class="font-serif text-lg text-[var(--color-mirloz-cream)] flex items-center gap-2">
+                  {{ section.settings.feature_1_title }}
+                  <span class="font-mono text-[9px] text-[var(--color-mirloz-gold)] tracking-[0.1em] uppercase">({{ section.settings.feature_1_topic }})</span>
+                </h4>
+                <p class="text-xs text-[var(--color-mirloz-muted)] mt-1 font-sans">{{ section.settings.feature_1_desc }}</p>
+              </div>
+            </div>
+          {% endif %}
+          {% if section.settings.feature_2_title != blank %}
+            <div class="flex gap-4 items-start p-4 bg-[var(--color-mirloz-surface)] border border-[var(--color-mirloz-border)] rounded hover:border-[var(--color-mirloz-gold)]/30 transition-colors">
+              <span class="text-2xl mt-1">{{ section.settings.feature_2_icon }}</span>
+              <div>
+                <h4 class="font-serif text-lg text-[var(--color-mirloz-cream)] flex items-center gap-2">
+                  {{ section.settings.feature_2_title }}
+                  <span class="font-mono text-[9px] text-[var(--color-mirloz-gold)] tracking-[0.1em] uppercase">({{ section.settings.feature_2_topic }})</span>
+                </h4>
+                <p class="text-xs text-[var(--color-mirloz-muted)] mt-1 font-sans">{{ section.settings.feature_2_desc }}</p>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const container = document.getElementById('FanzineSection-{{ section.id }}');
+  if (!container) return;
+
+  const slides = container.querySelectorAll('.fanzine-page-slide');
+  const prevBtn = container.querySelector('.fanzine-prev-btn');
+  const nextBtn = container.querySelector('.fanzine-next-btn');
+  
+  const pageNumIndicator = container.querySelector('.current-page-num-indicator');
+  const pageNumLabel = container.querySelector('.current-page-num-label');
+  const pageNumCounter = container.querySelector('.current-page-num-counter');
+
+  let currentPage = 0;
+  const totalPages = {{ section.blocks.size }};
+
+  function updateFanzine() {
+    slides.forEach((slide, idx) => {
+      if (idx === currentPage) {
+        slide.classList.remove('opacity-0', 'pointer-events-none');
+        slide.classList.add('opacity-100', 'pointer-events-auto', 'active-slide');
+      } else {
+        slide.classList.remove('opacity-100', 'pointer-events-auto', 'active-slide');
+        slide.classList.add('opacity-0', 'pointer-events-none');
+      }
+    });
+
+    // Update buttons
+    prevBtn.disabled = currentPage === 0;
+    if (currentPage === 0) {
+      prevBtn.classList.add('opacity-30');
+    } else {
+      prevBtn.classList.remove('opacity-30');
+    }
+
+    nextBtn.disabled = currentPage === totalPages - 1;
+    if (currentPage === totalPages - 1) {
+      nextBtn.classList.add('opacity-30');
+    } else {
+      nextBtn.classList.remove('opacity-30');
+    }
+
+    // Update page numbers
+    const displayPage = currentPage + 1;
+    pageNumIndicator.textContent = displayPage;
+    pageNumLabel.textContent = displayPage;
+    pageNumCounter.textContent = displayPage;
+  }
+
+  prevBtn.addEventListener('click', () => {
+    if (currentPage > 0) {
+      currentPage--;
+      updateFanzine();
+    }
+  });
+
+  nextBtn.addEventListener('click', () => {
+    if (currentPage < totalPages - 1) {
+      currentPage++;
+      updateFanzine();
+    }
+  });
+
+  // Initial load
+  updateFanzine();
+});
+</script>
+
+{% schema %}
+{
+  "name": "Mirloz Fanzine Preview",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "El Valor Agregado: Fanzine de Culto"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Un Fanzine Científico como puente al asombro."
+    },
+    {
+      "type": "text",
+      "id": "description_accent",
+      "label": "Description Accent",
+      "default": "EL PICO DE FUEGO DEL MIRLO — El contraste de la ciencia brillante en un paquete negro misterioso."
+    },
+    {
+      "type": "text",
+      "id": "tag_1",
+      "label": "Tag 1",
+      "default": "Fanzine Impreso"
+    },
+    {
+      "type": "text",
+      "id": "tag_2",
+      "label": "Tag 2",
+      "default": "Ciencia Abierta"
+    },
+    {
+      "type": "text",
+      "id": "tag_3",
+      "label": "Tag 3",
+      "default": "Ilustrado"
+    },
+    {
+      "type": "text",
+      "id": "book_footer_left",
+      "label": "Book Footer Left",
+      "default": "Café Mirloz • Edición I"
+    },
+    {
+      "type": "text",
+      "id": "right_heading",
+      "label": "Right Info Heading",
+      "default": "El saber florece en las sombras del bosque."
+    },
+    {
+      "type": "richtext",
+      "id": "right_text",
+      "label": "Right Info Text",
+      "default": "<p>El fanzine es nuestra manera de escarbar las hojas superficiales, tal como lo hace el <strong>Mirlo</strong> en el bosque, para buscar la esencia y la verdad de las cosas. Con cada lote del café, recibirás un volumen exclusivo ilustrado en papel reciclado.</p>"
+    },
+    {
+      "type": "text",
+      "id": "feature_1_icon",
+      "label": "Feature 1 Icon",
+      "default": "🧠"
+    },
+    {
+      "type": "text",
+      "id": "feature_1_title",
+      "label": "Feature 1 Title",
+      "default": "El cerebro y la cafeína"
+    },
+    {
+      "type": "text",
+      "id": "feature_1_topic",
+      "label": "Feature 1 Topic",
+      "default": "Neurociencia"
+    },
+    {
+      "type": "textarea",
+      "id": "feature_1_desc",
+      "label": "Feature 1 Description",
+      "default": "Descubre cómo la cafeína bloquea los receptores de adenosina en tu cerebro, manteniendo la vigilia y estimulando la liberación de dopamina."
+    },
+    {
+      "type": "text",
+      "id": "feature_2_icon",
+      "label": "Feature 2 Icon",
+      "default": "🔬"
+    },
+    {
+      "type": "text",
+      "id": "feature_2_title",
+      "label": "Feature 2 Title",
+      "default": "Microorganismos invisibles"
+    },
+    {
+      "type": "text",
+      "id": "feature_2_topic",
+      "label": "Feature 2 Topic",
+      "default": "Biología"
+    },
+    {
+      "type": "textarea",
+      "id": "feature_2_desc",
+      "label": "Feature 2 Description",
+      "default": "Levaduras y bacterias transforman el mucílago del grano en compuestos volátiles. Un ecosistema microscópico que define la acidez."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "fanzine_page",
+      "name": "Fanzine Page",
+      "settings": [
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Page Subtitle",
+          "default": "Vol. I — La Ciencia del Café"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Page Title",
+          "default": "MIRLOZ Fanzine"
+        },
+        {
+          "type": "textarea",
+          "id": "content",
+          "label": "Page Content",
+          "default": "Abre este pequeño manual para explorar la física, biología y química detrás de cada sorbo. Un regalo impreso que acompaña cada bolsa."
+        },
+        {
+          "type": "image_picker",
+          "id": "illustration_image",
+          "label": "Illustration Image"
+        },
+        {
+          "type": "html",
+          "id": "illustration_html",
+          "label": "Custom HTML/SVG Diagram (Fallback)",
+          "default": "<div style='text-align:center;'>Diagrama Fanzine</div>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mirloz Fanzine Preview",
+      "blocks": [
+        {
+          "type": "fanzine_page",
+          "settings": {
+            "title": "MIRLOZ FANZINE",
+            "subtitle": "Vol. I — La Ciencia del Café",
+            "content": "Abre este manual para explorar la física, biología y química detrás de cada sorbo. Un regalo impreso con cada bolsa de café.",
+            "illustration_html": "<div style='text-align:center; padding: 20px; font-weight: bold;'>[Portada Ilustrada]</div>"
+          }
+        },
+        {
+          "type": "fanzine_page",
+          "settings": {
+            "title": "01. Neurociencia",
+            "subtitle": "El Bloqueo de la Adenosina",
+            "content": "La cafeína tiene una estructura molecular similar a la adenosina. Al unirse a sus receptores, actúa como un escudo protector contra el cansancio.",
+            "illustration_html": "<div style='text-align:center;'>CH3-N-C=O ⇄ Adenosina</div>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
