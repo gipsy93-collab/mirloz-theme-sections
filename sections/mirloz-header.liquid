@@ -1,0 +1,99 @@
+{{ 'mirloz-styles.css' | asset_url | stylesheet_tag }}
+
+<header id="ShopifyHeader-{{ section.id }}" class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-5 sm:px-12 md:px-24 backdrop-blur-xl bg-[var(--color-mirloz-dark)]/70 border-b border-[var(--color-mirloz-border)]">
+  <!-- Logo -->
+  <a href="/" class="flex items-center gap-2 cursor-pointer no-underline">
+    <span class="font-serif font-bold text-2xl tracking-tight text-[var(--color-mirloz-cream)]">
+      {{ section.settings.logo_first_part }}<span class="text-[var(--color-mirloz-gold)]">{{ section.settings.logo_second_part }}</span>
+    </span>
+  </a>
+
+  <!-- Desktop Navigation -->
+  <div class="hidden md:flex items-center gap-8">
+    {% if section.settings.menu != blank %}
+      {% for link in linklists[section.settings.menu].links %}
+        <a
+          href="{{ link.url }}"
+          class="font-mono text-[11px] tracking-[0.15em] uppercase text-[var(--color-mirloz-muted)] hover:text-[var(--color-mirloz-gold)] transition-colors no-underline"
+        >
+          {{ link.title }}
+        </a>
+      {% endfor %}
+    {% else %}
+      <!-- Fallback hardcoded links if no menu selected -->
+      <a href="#producto" class="font-mono text-[11px] tracking-[0.15em] uppercase text-[var(--color-mirloz-muted)] hover:text-[var(--color-mirloz-gold)] transition-colors no-underline">Café</a>
+      <a href="#fanzine" class="font-mono text-[11px] tracking-[0.15em] uppercase text-[var(--color-mirloz-muted)] hover:text-[var(--color-mirloz-gold)] transition-colors no-underline">Fanzine</a>
+      <a href="#historia" class="font-mono text-[11px] tracking-[0.15em] uppercase text-[var(--color-mirloz-muted)] hover:text-[var(--color-mirloz-gold)] transition-colors no-underline">Historia</a>
+      <a href="#faq" class="font-mono text-[11px] tracking-[0.15em] uppercase text-[var(--color-mirloz-muted)] hover:text-[var(--color-mirloz-gold)] transition-colors no-underline">FAQ</a>
+    {% endif %}
+
+    {% if section.settings.show_button %}
+      <a
+        href="{{ section.settings.button_link | default: '#comprar' }}"
+        class="font-mono text-[11px] tracking-[0.15em] uppercase px-6 py-2.5 bg-[var(--color-mirloz-gold)] text-[var(--color-mirloz-dark)] font-medium hover:bg-[var(--color-mirloz-gold-light)] transition-colors no-underline"
+      >
+        {{ section.settings.button_text }}
+      </a>
+    {% endif %}
+  </div>
+
+  <!-- Mobile CTA -->
+  {% if section.settings.show_button %}
+    <div class="md:hidden">
+      <a
+        href="{{ section.settings.button_link | default: '#comprar' }}"
+        class="font-mono text-[10px] tracking-[0.15em] uppercase px-4 py-2 bg-[var(--color-mirloz-gold)] text-[var(--color-mirloz-dark)] font-medium no-underline"
+      >
+        {{ section.settings.button_text }}
+      </a>
+    </div>
+  {% endif %}
+</header>
+
+{% schema %}
+{
+  "name": "Mirloz Header",
+  "settings": [
+    {
+      "type": "text",
+      "id": "logo_first_part",
+      "label": "Logo First Part (White)",
+      "default": "MIR"
+    },
+    {
+      "type": "text",
+      "id": "logo_second_part",
+      "label": "Logo Second Part (Gold)",
+      "default": "LOZ"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu Selector"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_button",
+      "label": "Show CTA Button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "CTA Button Text",
+      "default": "Reservar"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "CTA Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mirloz Header",
+      "category": "Header"
+    }
+  ]
+}
+{% endschema %}
