@@ -57,7 +57,7 @@
       <div class="flex flex-col sm:flex-row gap-4">
         <a
           href="{{ section.settings.button_1_link | default: '#comprar' }}"
-          class="flex items-center justify-center gap-2 bg-[var(--color-mirloz-gold)] hover:bg-[var(--color-mirloz-gold-light)] text-[var(--color-mirloz-dark)] font-bold px-8 py-4 transition-all hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(196,162,101,0.25)] no-underline"
+          class="flex items-center justify-center gap-2 bg-[var(--color-mirloz-gold)] hover:bg-[var(--color-mirloz-gold-light)] text-[var(--color-mirloz-dark)] font-bold px-8 py-4 transition-all hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(196,162,101,0.25)] no-underline font-mono text-lg tracking-[0.15em] uppercase"
         >
           <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
           {{ section.settings.button_1_text }}
@@ -159,13 +159,12 @@
       "type": "text",
       "id": "button_1_text",
       "label": "Primary Button Text",
-      "default": "Lo quiero probar"
+      "default": "Lo quiero"
     },
     {
       "type": "url",
       "id": "button_1_link",
-      "label": "Primary Button Link",
-      "default": "#comprar"
+      "label": "Primary Button Link"
     },
     {
       "type": "text",
