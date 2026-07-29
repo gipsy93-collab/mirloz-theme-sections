@@ -1,0 +1,61 @@
+{
+  "sections": {
+    "hero": {
+      "type": "mirloz-hero",
+      "settings": {
+        "badge_text": "Edición Limitada — 50 Unidades",
+        "heading": "EL CANTO DE LA CURIOSIDAD",
+        "text": "Café de especialidad colombiano. Inspirado en el canto y la agudeza del mirlo, cada empaque negro profundo esconde un pico de luz científica en forma de fanzine."
+      }
+    },
+    "fanzine_preview": {
+      "type": "mirloz-fanzine-preview",
+      "settings": {
+        "badge_text": "El Valor Agregado: Fanzine de Culto",
+        "heading": "Un Fanzine Científico como puente al asombro.",
+        "description_accent": "EL PICO DE FUEGO DEL MIRLO — El contraste de la ciencia brillante en un paquete negro misterioso."
+      }
+    },
+    "fanzine_showcase": {
+      "type": "mirloz-fanzine-showcase",
+      "settings": {
+        "badge_text": "La Colección",
+        "heading": "Vitrina de Fanzines",
+        "subheading": "Explora los diferentes volúmenes que hemos editado. Ciencia, arte y cultura general para acompañar tus tazas diarias."
+      }
+    },
+    "story": {
+      "type": "mirloz-story",
+      "settings": {
+        "badge_text": "Nuestra Esencia",
+        "heading": "Un homenaje familiar hecho café y ciencia.",
+        "image_title": "El Vuelo de Nuestras Raíces",
+        "image_subtitle": "Mirian + López = Mirloz"
+      }
+    },
+    "blog": {
+      "type": "mirloz-blog",
+      "settings": {
+        "badge_text": "Bitácora",
+        "heading": "Café, Ciencia y Cultura",
+        "post_limit": 3
+      }
+    },
+    "cta": {
+      "type": "mirloz-cta",
+      "settings": {
+        "badge_text": "Primer Vuelo: Solo 50 unidades de 250g",
+        "heading": "DESPIERTA TU VUELO INTELECTUAL",
+        "text": "Llévate una de las 50 bolsas del primer lote. Café de especialidad colombiano con el primer fanzine científico físico de regalo para acompañar tus mañanas de asombro."
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "fanzine_preview",
+    "fanzine_showcase",
+    "story",
+    "blog",
+    "cta"
+  ]
+}
