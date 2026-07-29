@@ -1,0 +1,64 @@
+<section class="max-w-3xl mx-auto px-6 py-28">
+  <h1 class="font-serif text-3xl md:text-4xl font-medium text-[var(--color-mirloz-cream)] mb-2">
+    {{ 'general.customer.account.welcome' | t: name: customer.first_name }}
+  </h1>
+  <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-[var(--color-mirloz-gold)] mb-10">
+    {{ customer.email }}
+  </p>
+
+  <div class="mb-12">
+    <h2 class="font-serif text-2xl text-[var(--color-mirloz-cream)] mb-6">
+      {{ 'general.customer.account.order_history' | t }}
+    </h2>
+
+    {% if customer.orders.size > 0 %}
+      <div class="space-y-4">
+        {% for order in customer.orders %}
+          <div class="bg-[var(--color-mirloz-surface)] border border-[var(--color-mirloz-border)] rounded-lg p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <a href="{{ order.customer_url }}" class="font-serif text-lg text-[var(--color-mirloz-cream)] hover:text-[var(--color-mirloz-gold)] transition-colors no-underline">
+                {{ order.name }}
+              </a>
+              <p class="font-mono text-[10px] text-[var(--color-mirloz-muted)] mt-1">
+                {{ order.created_at | date: "%d/%m/%Y" }}
+              </p>
+            </div>
+            <div class="flex items-center gap-4">
+              <span class="font-mono text-sm text-[var(--color-mirloz-gold)]">
+                {{ order.total_price | money }}
+              </span>
+              <span class="font-mono text-[10px] px-3 py-1 border border-[var(--color-mirloz-border)] text-[var(--color-mirloz-muted)]">
+                {{ order.fulfillment_status_label }}
+              </span>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="text-[var(--color-mirloz-muted)] font-sans text-sm">
+        {{ 'general.customer.account.no_orders' | t }}
+      </p>
+    {% endif %}
+  </div>
+
+  <div class="flex flex-wrap gap-4 pt-8 border-t border-[var(--color-mirloz-border)]">
+    <a href="{{ routes.account_addresses_url }}" class="font-mono text-xs text-[var(--color-mirloz-gold)] hover:text-[var(--color-mirloz-gold-light)] no-underline border border-[var(--color-mirloz-border)] hover:border-[var(--color-mirloz-gold)] px-6 py-3 transition-colors">
+      {{ 'general.customer.account.addresses' | t }}
+    </a>
+    <a href="{{ routes.account_logout_url }}" class="font-mono text-xs text-[var(--color-mirloz-muted)] hover:text-red-400 no-underline border border-[var(--color-mirloz-border)] hover:border-red-400/40 px-6 py-3 transition-colors">
+      {{ 'general.customer.account.logout' | t }}
+    </a>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Mi Cuenta",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Cuenta"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,76 @@
+<section class="max-w-3xl mx-auto px-6 py-28">
+  <h1 class="font-serif text-3xl md:text-4xl font-medium text-[var(--color-mirloz-cream)] mb-8">
+    {{ 'general.customer.order.title' | t: order_name: order.name }}
+  </h1>
+
+  <div class="bg-[var(--color-mirloz-surface)] border border-[var(--color-mirloz-border)] rounded-lg p-8 space-y-6">
+    <div class="grid grid-cols-2 gap-4">
+      <div>
+        <span class="font-mono text-[9px] text-[var(--color-mirloz-muted)] uppercase block">{{ 'general.customer.order.date' | t }}</span>
+        <span class="text-sm text-[var(--color-mirloz-cream)] font-mono">{{ order.created_at | date: "%d/%m/%Y" }}</span>
+      </div>
+      <div>
+        <span class="font-mono text-[9px] text-[var(--color-mirloz-muted)] uppercase block">{{ 'general.customer.order.status' | t }}</span>
+        <span class="text-sm text-[var(--color-mirloz-gold)] font-mono">{{ order.fulfillment_status_label }}</span>
+      </div>
+    </div>
+
+    <div class="border-t border-[var(--color-mirloz-border)] pt-4">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="text-left font-mono text-[10px] text-[var(--color-mirloz-muted)] uppercase tracking-wider">
+            <th class="pb-2">{{ 'general.customer.order.product' | t }}</th>
+            <th class="pb-2 text-right">{{ 'general.customer.order.quantity' | t }}</th>
+            <th class="pb-2 text-right">{{ 'general.customer.order.total' | t }}</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-[var(--color-mirloz-border)]">
+          {% for line_item in order.line_items %}
+            <tr>
+              <td class="py-3 text-[var(--color-mirloz-cream)] font-sans">{{ line_item.title }}</td>
+              <td class="py-3 text-right font-mono text-[var(--color-mirloz-muted)]">{{ line_item.quantity }}</td>
+              <td class="py-3 text-right font-mono text-[var(--color-mirloz-gold)]">{{ line_item.final_line_price | money }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="border-t border-[var(--color-mirloz-border)] pt-4 grid grid-cols-1 sm:grid-cols-2 gap-8">
+      {% if order.shipping_address %}
+        <div>
+          <span class="font-mono text-[9px] text-[var(--color-mirloz-muted)] uppercase block mb-2">{{ 'general.customer.order.shipping_address' | t }}</span>
+          <p class="text-sm text-[var(--color-mirloz-cream)] font-sans leading-relaxed">
+            {{ order.shipping_address | format_address }}
+          </p>
+        </div>
+      {% endif %}
+      {% if order.billing_address %}
+        <div>
+          <span class="font-mono text-[9px] text-[var(--color-mirloz-muted)] uppercase block mb-2">{{ 'general.customer.order.billing_address' | t }}</span>
+          <p class="text-sm text-[var(--color-mirloz-cream)] font-sans leading-relaxed">
+            {{ order.billing_address | format_address }}
+          </p>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="mt-6">
+    <a href="{{ routes.account_url }}" class="font-mono text-xs text-[var(--color-mirloz-gold)] hover:text-[var(--color-mirloz-gold-light)] no-underline">
+      &larr; {{ 'general.customer.account.title' | t }}
+    </a>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Pedido",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Detalle de Pedido"
+    }
+  ]
+}
+{% endschema %}

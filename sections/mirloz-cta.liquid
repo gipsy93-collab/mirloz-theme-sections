@@ -15,7 +15,7 @@
       </div>
 
       <!-- Price + Shopify Native Add to Cart Form -->
-      {%- assign selected_product = section.settings.product_id -%}
+      {%- assign selected_product = all_products[section.settings.product_id] -%}
       {%- if selected_product != blank -%}
         
         <div class="flex flex-col items-center gap-3 mb-8">

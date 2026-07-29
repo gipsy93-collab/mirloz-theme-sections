@@ -1,0 +1,76 @@
+<section class="max-w-6xl mx-auto px-6 py-28">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+    <div class="sticky top-28">
+      {% if product.featured_image %}
+        <div class="aspect-square border border-[var(--color-mirloz-border)] rounded-lg overflow-hidden">
+          <img
+            src="{{ product.featured_image | image_url: width: 800 }}"
+            alt="{{ product.title }}"
+            class="w-full h-full object-cover"
+            loading="eager"
+          >
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="space-y-6">
+      <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-[var(--color-mirloz-gold)]">
+        {{ product.vendor }}
+      </p>
+      <h1 class="font-serif text-4xl md:text-5xl font-medium text-[var(--color-mirloz-cream)] leading-[1.1]">
+        {{ product.title }}
+      </h1>
+
+      <div class="flex items-baseline gap-3">
+        <span class="font-serif text-3xl text-[var(--color-mirloz-cream)]">
+          {{ product.price | money }}
+        </span>
+        {% if product.compare_at_price > product.price %}
+          <span class="text-lg text-[var(--color-mirloz-muted)] line-through">
+            {{ product.compare_at_price | money }}
+          </span>
+        {% endif %}
+      </div>
+
+      <div class="text-[var(--color-mirloz-muted)] leading-relaxed font-sans text-sm">
+        {{ product.description }}
+      </div>
+
+      {% form 'product', product, class: 'pt-4' %}
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+        <div class="flex flex-col sm:flex-row gap-4">
+          <input
+            type="number"
+            name="quantity"
+            value="1"
+            min="1"
+            class="w-24 px-4 py-3 bg-[var(--color-mirloz-surface)] border border-[var(--color-mirloz-border)] text-[var(--color-mirloz-cream)] font-mono text-sm focus:border-[var(--color-mirloz-gold)] focus:outline-none"
+          >
+          <button
+            type="submit"
+            class="flex-1 bg-[var(--color-mirloz-gold)] hover:bg-[var(--color-mirloz-gold-light)] text-[var(--color-mirloz-dark)] font-bold px-8 py-3 transition-all font-mono text-xs tracking-[0.15em] uppercase cursor-pointer"
+            {% unless product.available %}disabled{% endunless %}
+          >
+            {% if product.available %}
+              {{ 'general.product.add_to_cart' | t }}
+            {% else %}
+              {{ 'general.product.sold_out' | t }}
+            {% endif %}
+          </button>
+        </div>
+      {% endform %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Producto",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Producto Principal"
+    }
+  ]
+}
+{% endschema %}

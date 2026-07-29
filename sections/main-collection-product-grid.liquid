@@ -1,0 +1,49 @@
+<section class="max-w-6xl mx-auto px-6 py-16">
+  {% if collection.products_count > 0 %}
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      {% for product in collection.products %}
+        <a href="{{ product.url }}" class="group bg-[var(--color-mirloz-surface)] border border-[var(--color-mirloz-border)] hover:border-[var(--color-mirloz-gold)]/40 rounded-lg overflow-hidden transition-all duration-300 no-underline flex flex-col">
+          <div class="aspect-square bg-black/20 overflow-hidden border-b border-[var(--color-mirloz-border)]">
+            {% if product.featured_image %}
+              <img
+                src="{{ product.featured_image | image_url: width: 600 }}"
+                alt="{{ product.title }}"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              >
+            {% endif %}
+          </div>
+          <div class="p-6 flex flex-col gap-2 flex-1">
+            <h3 class="font-serif text-xl font-medium text-[var(--color-mirloz-cream)] group-hover:text-[var(--color-mirloz-gold)] transition-colors">
+              {{ product.title }}
+            </h3>
+            <p class="font-mono text-sm text-[var(--color-mirloz-gold)]">
+              {{ product.price | money }}
+              {% if product.compare_at_price > product.price %}
+                <span class="text-[var(--color-mirloz-muted)] line-through ml-2">{{ product.compare_at_price | money }}</span>
+              {% endif %}
+            </p>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="text-center py-20">
+      <p class="font-mono text-sm text-[var(--color-mirloz-muted)]">
+        {{ 'general.collection.no_products' | t }}
+      </p>
+    </div>
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "Productos de Colección",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Cuadrícula de Productos"
+    }
+  ]
+}
+{% endschema %}

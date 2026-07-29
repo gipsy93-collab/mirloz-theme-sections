@@ -1,0 +1,54 @@
+<section class="max-w-md mx-auto px-6 py-28">
+  <h1 class="font-serif text-3xl md:text-4xl font-medium text-[var(--color-mirloz-cream)] mb-8 text-center">
+    {{ 'general.customer.activate_account.title' | t }}
+  </h1>
+
+  {% form 'activate_customer_password' %}
+    {{ form.errors | default_errors }}
+
+    <div class="space-y-4">
+      <input
+        type="password"
+        name="customer[password]"
+        placeholder="{{ 'general.customer.activate_account.password' | t }}"
+        required
+        class="w-full px-4 py-3 bg-[var(--color-mirloz-surface)] border border-[var(--color-mirloz-border)] text-[var(--color-mirloz-cream)] font-sans text-sm focus:border-[var(--color-mirloz-gold)] focus:outline-none"
+      >
+      <input
+        type="password"
+        name="customer[password_confirmation]"
+        placeholder="{{ 'general.customer.activate_account.confirm' | t }}"
+        required
+        class="w-full px-4 py-3 bg-[var(--color-mirloz-surface)] border border-[var(--color-mirloz-border)] text-[var(--color-mirloz-cream)] font-sans text-sm focus:border-[var(--color-mirloz-gold)] focus:outline-none"
+      >
+      <button
+        type="submit"
+        class="w-full bg-[var(--color-mirloz-gold)] hover:bg-[var(--color-mirloz-gold-light)] text-[var(--color-mirloz-dark)] font-bold px-8 py-3 transition-all font-mono text-xs tracking-[0.15em] uppercase cursor-pointer"
+      >
+        {{ 'general.customer.activate_account.submit' | t }}
+      </button>
+    </div>
+
+    <div class="text-center mt-6">
+      <button
+        type="submit"
+        name="decline"
+        class="font-mono text-xs text-[var(--color-mirloz-muted)] hover:text-red-400 bg-transparent border-none cursor-pointer"
+      >
+        {{ 'general.customer.activate_account.decline' | t }}
+      </button>
+    </div>
+  {% endform %}
+</section>
+
+{% schema %}
+{
+  "name": "Activar Cuenta",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Activar Cuenta"
+    }
+  ]
+}
+{% endschema %}

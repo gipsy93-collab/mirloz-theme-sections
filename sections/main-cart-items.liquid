@@ -1,0 +1,58 @@
+<section class="max-w-4xl mx-auto px-6 py-28">
+  <h1 class="font-serif text-4xl md:text-5xl font-medium text-[var(--color-mirloz-cream)] mb-10">
+    {{ 'general.cart.title' | t }}
+  </h1>
+
+  {% if cart.item_count > 0 %}
+    <div class="space-y-4">
+      {% for item in cart.items %}
+        <div class="flex items-center gap-6 bg-[var(--color-mirloz-surface)] border border-[var(--color-mirloz-border)] rounded-lg p-4">
+          <div class="w-20 h-20 flex-shrink-0 rounded overflow-hidden border border-[var(--color-mirloz-border)]">
+            {% if item.image %}
+              <img src="{{ item.image | image_url: width: 150 }}" alt="{{ item.title }}" class="w-full h-full object-cover" loading="lazy">
+            {% endif %}
+          </div>
+          <div class="flex-1 min-w-0">
+            <h3 class="font-serif text-lg text-[var(--color-mirloz-cream)] truncate">{{ item.product.title }}</h3>
+            <p class="font-mono text-xs text-[var(--color-mirloz-muted)]">{{ item.variant.title }}</p>
+            <div class="flex items-center gap-4 mt-2">
+              <input
+                type="number"
+                name="updates[]"
+                value="{{ item.quantity }}"
+                min="1"
+                class="w-16 px-2 py-1 bg-[var(--color-mirloz-dark)] border border-[var(--color-mirloz-border)] text-[var(--color-mirloz-cream)] font-mono text-xs focus:border-[var(--color-mirloz-gold)] focus:outline-none"
+                data-index="{{ forloop.index0 }}"
+              >
+              <span class="font-mono text-sm text-[var(--color-mirloz-gold)]">{{ item.final_line_price | money }}</span>
+            </div>
+          </div>
+          <a href="{{ item.url_to_remove }}" class="text-[var(--color-mirloz-muted)] hover:text-red-400 transition-colors font-mono text-xs no-underline">
+            {{ 'general.cart.remove' | t }}
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="text-center py-20">
+      <p class="font-mono text-sm text-[var(--color-mirloz-muted)] mb-6">
+        {{ 'general.cart.empty' | t }}
+      </p>
+      <a href="{{ routes.all_products_collection_url }}" class="inline-flex items-center gap-2 bg-[var(--color-mirloz-gold)] hover:bg-[var(--color-mirloz-gold-light)] text-[var(--color-mirloz-dark)] font-bold px-8 py-3 transition-all no-underline font-mono text-xs tracking-[0.15em] uppercase">
+        {{ 'general.cart.continue' | t }}
+      </a>
+    </div>
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "Artículos del Carrito",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Carrito"
+    }
+  ]
+}
+{% endschema %}

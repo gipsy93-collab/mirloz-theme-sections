@@ -1,0 +1,36 @@
+{% if collection.image or collection.title != blank %}
+<section class="w-full pt-28 pb-12 bg-[var(--color-mirloz-dark)] border-b border-[var(--color-mirloz-border)]">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    {% if collection.image %}
+      <div class="w-full max-w-lg mx-auto aspect-video rounded-lg overflow-hidden mb-8 border border-[var(--color-mirloz-border)]">
+        <img
+          src="{{ collection.image | image_url: width: 800 }}"
+          alt="{{ collection.title }}"
+          class="w-full h-full object-cover"
+          loading="eager"
+        >
+      </div>
+    {% endif %}
+    <h1 class="font-serif text-4xl md:text-5xl font-medium text-[var(--color-mirloz-cream)] mb-4">
+      {{ collection.title }}
+    </h1>
+    {% if collection.description != blank %}
+      <p class="text-[var(--color-mirloz-muted)] max-w-2xl mx-auto font-sans leading-relaxed">
+        {{ collection.description }}
+      </p>
+    {% endif %}
+  </div>
+</section>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Banner de Colección",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Banner de Colección"
+    }
+  ]
+}
+{% endschema %}

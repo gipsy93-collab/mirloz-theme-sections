@@ -1,0 +1,20 @@
+<section class="max-w-3xl mx-auto px-6 py-28">
+  <h1 class="font-serif text-4xl md:text-5xl font-medium text-[var(--color-mirloz-cream)] mb-8">
+    {{ page.title }}
+  </h1>
+  <div class="text-[var(--color-mirloz-muted)] leading-relaxed font-sans prose-invert">
+    {{ page.content }}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Página",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Página"
+    }
+  ]
+}
+{% endschema %}

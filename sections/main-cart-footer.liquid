@@ -1,0 +1,45 @@
+{% if cart.item_count > 0 %}
+<section class="max-w-4xl mx-auto px-6 pb-28">
+  <div class="bg-[var(--color-mirloz-surface)] border border-[var(--color-mirloz-border)] rounded-lg p-8">
+    <div class="flex items-center justify-between mb-6 pb-4 border-b border-[var(--color-mirloz-border)]">
+      <span class="font-mono text-xs tracking-[0.15em] uppercase text-[var(--color-mirloz-cream)]">
+        {{ 'general.cart.subtotal' | t }}
+      </span>
+      <span class="font-serif text-2xl text-[var(--color-mirloz-gold)]">
+        {{ cart.total_price | money }}
+      </span>
+    </div>
+
+    <form action="{{ routes.cart_url }}" method="post">
+      <button
+        type="submit"
+        name="checkout"
+        class="w-full bg-[var(--color-mirloz-gold)] hover:bg-[var(--color-mirloz-gold-light)] text-[var(--color-mirloz-dark)] font-bold px-8 py-4 transition-all font-mono text-xs tracking-[0.15em] uppercase cursor-pointer"
+      >
+        {{ 'general.cart.checkout' | t }}
+      </button>
+    </form>
+
+    <div class="flex flex-wrap gap-4 justify-center mt-6 pt-4 border-t border-[var(--color-mirloz-border)]">
+      <span class="font-mono text-[10px] text-[var(--color-mirloz-muted)] flex items-center gap-1">
+        <span class="text-[var(--color-mirloz-gold)]">&#10003;</span> Pago SSL Seguro
+      </span>
+      <span class="font-mono text-[10px] text-[var(--color-mirloz-muted)] flex items-center gap-1">
+        <span class="text-[var(--color-mirloz-gold)]">&#10003;</span> Shopify Checkout
+      </span>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Footer del Carrito",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Footer de Carrito"
+    }
+  ]
+}
+{% endschema %}
