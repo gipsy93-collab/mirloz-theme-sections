@@ -73,6 +73,27 @@
       {% endfor %}
     </div>
 
+    {% if section.settings.button_1_link != blank or section.settings.button_2_link != blank %}
+      <div class="flex flex-col sm:flex-row gap-4 justify-center mt-12 pt-8 border-t border-[var(--color-mirloz-border)]">
+        {% if section.settings.button_1_link != blank %}
+          <a
+            href="{{ section.settings.button_1_link }}"
+            class="inline-flex items-center justify-center gap-2 bg-[var(--color-mirloz-gold)] hover:bg-[var(--color-mirloz-gold-light)] text-[var(--color-mirloz-dark)] font-bold px-8 py-4 transition-all hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(196,162,101,0.25)] no-underline font-mono text-lg tracking-[0.15em] uppercase"
+          >
+            {{ section.settings.button_1_text }}
+          </a>
+        {% endif %}
+        {% if section.settings.button_2_link != blank %}
+          <a
+            href="{{ section.settings.button_2_link }}"
+            class="inline-flex items-center justify-center gap-2 border border-[var(--color-mirloz-border)] hover:border-[var(--color-mirloz-gold)] hover:text-[var(--color-mirloz-gold)] text-[var(--color-mirloz-cream)] font-medium px-8 py-4 transition-all hover:bg-[var(--color-mirloz-surface)] no-underline font-mono text-lg tracking-[0.15em] uppercase"
+          >
+            {{ section.settings.button_2_text }}
+          </a>
+        {% endif %}
+      </div>
+    {% endif %}
+
   </div>
 </section>
 
@@ -98,6 +119,32 @@
       "id": "subheading",
       "label": "Subheading",
       "default": "Explora los diferentes volúmenes que hemos editado. Ciencia, arte y cultura general para acompañar tus tazas diarias."
+    },
+    {
+      "type": "header",
+      "content": "Botones"
+    },
+    {
+      "type": "text",
+      "id": "button_1_text",
+      "label": "Botón 1 Texto",
+      "default": "Ver todos"
+    },
+    {
+      "type": "url",
+      "id": "button_1_link",
+      "label": "Botón 1 Enlace"
+    },
+    {
+      "type": "text",
+      "id": "button_2_text",
+      "label": "Botón 2 Texto",
+      "default": "Suscribirse"
+    },
+    {
+      "type": "url",
+      "id": "button_2_link",
+      "label": "Botón 2 Enlace"
     }
   ],
   "blocks": [

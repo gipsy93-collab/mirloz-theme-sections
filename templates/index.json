@@ -1,11 +1,29 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
       "type": "mirloz-hero",
       "settings": {
         "badge_text": "Edición Limitada — 50 Unidades",
-        "heading": "EL CANTO DE LA CURIOSIDAD",
-        "text": "Café de especialidad colombiano. Inspirado en el canto y la agudeza del mirlo, cada empaque negro profundo esconde un pico de luz científica en forma de fanzine."
+        "heading": "Mirloz",
+        "text": "Café de especialidad colombiano que no solo se bebe, también se lee.  \nMirloz nace del diálogo entre saberes y la memoria que guarda el grano: ciencia, cultivo y sensibilidad del origen.",
+        "button_1_text": "Lo quiero probar",
+        "button_1_link": "",
+        "button_2_text": "Nuestra Metáfora",
+        "button_2_link": "",
+        "product_image": "shopify://shop_images/1785364487628.png",
+        "floating_image_1": "shopify://shop_images/20231113_124359.jpg",
+        "floating_image_2": "shopify://shop_images/MANOS_CAFE_GRANO.jpg",
+        "hero_image": "shopify://shop_images/PSX_20221211_165758.jpg",
+        "video_url": ""
       }
     },
     "fanzine_preview": {
@@ -13,7 +31,21 @@
       "settings": {
         "badge_text": "El Valor Agregado: Fanzine de Culto",
         "heading": "Un Fanzine Científico como puente al asombro.",
-        "description_accent": "EL PICO DE FUEGO DEL MIRLO — El contraste de la ciencia brillante en un paquete negro misterioso."
+        "description_accent": "EL PICO DE FUEGO DEL MIRLO — El contraste de la ciencia brillante en un paquete negro misterioso.",
+        "tag_1": "Fanzine Impreso",
+        "tag_2": "Ciencia Abierta",
+        "tag_3": "Ilustrado",
+        "book_footer_left": "Café Mirloz • Edición I",
+        "right_heading": "El saber florece en las sombras del bosque.",
+        "right_text": "<p>El fanzine es nuestra manera de escarbar las hojas superficiales, tal como lo hace el <strong>Mirlo</strong> en el bosque, para buscar la esencia y la verdad de las cosas. Con cada lote del café, recibirás un volumen exclusivo ilustrado en papel reciclado.</p>",
+        "feature_1_icon": "🧠",
+        "feature_1_title": "El cerebro y la cafeína",
+        "feature_1_topic": "Neurociencia",
+        "feature_1_desc": "Descubre cómo la cafeína bloquea los receptores de adenosina en tu cerebro, manteniendo la vigilia y estimulando la liberación de dopamina.",
+        "feature_2_icon": "🔬",
+        "feature_2_title": "Microorganismos invisibles",
+        "feature_2_topic": "Biología",
+        "feature_2_desc": "Levaduras y bacterias transforman el mucílago del grano en compuestos volátiles. Un ecosistema microscópico que define la acidez."
       }
     },
     "fanzine_showcase": {
@@ -29,8 +61,21 @@
       "settings": {
         "badge_text": "Nuestra Esencia",
         "heading": "Un homenaje familiar hecho café y ciencia.",
+        "story_richtext": "<p>El nombre <strong>Mirloz</strong> nace de la unión de dos pilares esenciales: el nombre de mi madre, <strong>Mirian</strong>, y el apellido de mi padre, <strong>López</strong>. Es un tributo a nuestras raíces, al amor por la tierra y al esfuerzo de nuestra herencia.</p><p>Pero el nombre también juega con el <strong>Mirlo</strong>, esa ave audaz y curiosa del bosque. Decidimos llevar este paralelismo a cada aspecto de nuestro café de especialidad, convirtiendo la taza en una experiencia tan profunda y libre como el vuelo del ave.</p>",
+        "story_image": "shopify://shop_images/CANASTO_CAFE.jpg",
         "image_title": "El Vuelo de Nuestras Raíces",
-        "image_subtitle": "Mirian + López = Mirloz"
+        "image_subtitle": "Mirian + López = Mirloz",
+        "metaphor_heading": "La Metáfora del Mirlo",
+        "metaphor_subheading": "¿Cómo se traduce el ave en cada sorbo de Café Mirloz?",
+        "card_1_icon": "✨",
+        "card_1_title": "Plumaje y Pico de Fuego",
+        "card_1_desc": "El mirlo macho destaca por su plumaje negro profundo y su pico amarillo-naranja brillante. Nuestro café imita este contraste: una bolsa de diseño negro mate y misterioso, que al abrirse revela un pico de luz dorada: un fanzine científico vibrante.",
+        "card_2_icon": "🎵",
+        "card_2_title": "El Canto de la Taza",
+        "card_2_desc": "El canto del mirlo es melódico, complejo e improvisado, adaptándose al amanecer y atardecer. Así es el perfil de nuestro café: notas frutales y achocolatadas que cambian y deleitan al paladar, ofreciendo una sinfonía única en cada taza.",
+        "card_3_icon": "🔍",
+        "card_3_title": "Curiosidad Terrenal",
+        "card_3_desc": "El mirlo es inteligente y curioso, escarbando las hojas secas del suelo para encontrar alimento. Nuestro proyecto emula esa búsqueda incansable del conocimiento, investigando y divulgando ciencia en un fanzine físico exclusivo de regalo."
       }
     },
     "blog": {
@@ -38,7 +83,10 @@
       "settings": {
         "badge_text": "Bitácora",
         "heading": "Café, Ciencia y Cultura",
-        "post_limit": 3
+        "blog_id": "",
+        "post_limit": 3,
+        "button_text": "Ver Todos los Artículos",
+        "button_link": ""
       }
     },
     "cta": {
@@ -46,7 +94,14 @@
       "settings": {
         "badge_text": "Primer Vuelo: Solo 50 unidades de 250g",
         "heading": "DESPIERTA TU VUELO INTELECTUAL",
-        "text": "Llévate una de las 50 bolsas del primer lote. Café de especialidad colombiano con el primer fanzine científico físico de regalo para acompañar tus mañanas de asombro."
+        "text": "Llévate una de las 50 bolsas del primer lote. Café de especialidad colombiano con el primer fanzine científico físico de regalo para acompañar tus mañanas de asombro.",
+        "product_id": "",
+        "promo_label": "OFERTA DE LANZAMIENTO",
+        "button_text": "Añadir al Carrito",
+        "trust_1": "Pago SSL Seguro",
+        "trust_2": "Shopify Checkout",
+        "trust_3": "Envío Peninsular España",
+        "trust_4": "Garantía de Satisfacción"
       }
     }
   },
