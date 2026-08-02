@@ -28,16 +28,31 @@
     },
     "fanzine_preview": {
       "type": "mirloz-fanzine-preview",
+      "blocks": {
+        "fanzine_page_zcG6wJ": {
+          "type": "fanzine_page",
+          "settings": {
+            "subtitle": "Vol. I — La Ciencia del Café",
+            "title": "",
+            "content": "",
+            "illustration_image": "shopify://shop_images/1785714750835.png",
+            "illustration_html": ""
+          }
+        }
+      },
+      "block_order": [
+        "fanzine_page_zcG6wJ"
+      ],
       "settings": {
         "badge_text": "El Valor Agregado: Fanzine de Culto",
         "heading": "Mirloz, el sabor de los saberes",
-        "description_accent": "Mirloz no solo se bebé, también se lee. Cada edición de café hablará",
+        "description_accent": "",
         "tag_1": "Fanzine Impreso",
         "tag_2": "Ciencia Abierta",
         "tag_3": "Ilustrado",
         "book_footer_left": "Café Mirloz • Edición I",
         "right_heading": "El saber florece en las sombras del bosque.",
-        "right_text": "<p>El fanzine es nuestra manera de escarbar las hojas superficiales, tal como lo hace el <strong>Mirlo</strong> en el bosque, para buscar la esencia y la verdad de las cosas. Con cada lote del café, recibirás un volumen exclusivo ilustrado en papel reciclado.</p>",
+        "right_text": "<p>En Mirloz, el café no solo se bebe: también se lee. Hemos diseñado una experiencia donde el sabor se encuentra con el pensamiento. Con cada edición de café, recibirás un fanzine exclusivo: una curaduría física que abre puertas a saberes científicos o conocimientos ancestrales.</p><p>Prepara tu método favorito, abre el fanzine y transforma tu pausa diaria en un momento de aprendizaje.</p>",
         "feature_1_icon": "🧠",
         "feature_1_title": "El cerebro y la cafeína",
         "feature_1_topic": "Neurociencia",
@@ -49,18 +64,6 @@
         "button_1_text": "Comprar ahora",
         "button_1_link": "",
         "button_2_text": "Ver colección",
-        "button_2_link": ""
-      }
-    },
-    "fanzine_showcase": {
-      "type": "mirloz-fanzine-showcase",
-      "settings": {
-        "badge_text": "La Colección",
-        "heading": "Vitrina de Fanzines",
-        "subheading": "Explora los diferentes volúmenes que hemos editado. Ciencia, arte y cultura general para acompañar tus tazas diarias.",
-        "button_1_text": "Ver todos",
-        "button_1_link": "",
-        "button_2_text": "Suscribirse",
         "button_2_link": ""
       }
     },
@@ -92,6 +95,7 @@
     },
     "blog": {
       "type": "mirloz-blog",
+      "disabled": true,
       "settings": {
         "badge_text": "Bitácora",
         "heading": "Café, Ciencia y Cultura",
@@ -120,7 +124,6 @@
   "order": [
     "hero",
     "fanzine_preview",
-    "fanzine_showcase",
     "story",
     "blog",
     "cta"
