@@ -26,11 +26,11 @@ class MirlozFanzine {
   update() {
     this.slides.forEach((slide, idx) => {
       if (idx === this.currentPage) {
-        slide.classList.remove('opacity-0', 'pointer-events-none');
-        slide.classList.add('opacity-100', 'pointer-events-auto', 'active-slide');
+        slide.style.opacity = '1';
+        slide.style.pointerEvents = 'auto';
       } else {
-        slide.classList.remove('opacity-100', 'pointer-events-auto', 'active-slide');
-        slide.classList.add('opacity-0', 'pointer-events-none');
+        slide.style.opacity = '0';
+        slide.style.pointerEvents = 'none';
       }
     });
 
@@ -38,9 +38,9 @@ class MirlozFanzine {
     const isLast = this.currentPage === this.totalPages - 1;
 
     this.prevBtn.disabled = isFirst;
-    this.prevBtn.classList.toggle('opacity-30', isFirst);
+    this.prevBtn.style.opacity = isFirst ? '0.3' : '1';
     this.nextBtn.disabled = isLast;
-    this.nextBtn.classList.toggle('opacity-30', isLast);
+    this.nextBtn.style.opacity = isLast ? '0.3' : '1';
 
     const displayPage = this.currentPage + 1;
     this.pageNumIndicators.forEach(el => {
