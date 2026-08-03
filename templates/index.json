@@ -28,21 +28,6 @@
     },
     "fanzine_preview": {
       "type": "mirloz-fanzine-preview",
-      "blocks": {
-        "fanzine_page_zcG6wJ": {
-          "type": "fanzine_page",
-          "settings": {
-            "subtitle": "Vol. I — La Ciencia del Café",
-            "title": "",
-            "content": "",
-            "illustration_image": "shopify://shop_images/1785714750835.png",
-            "illustration_html": ""
-          }
-        }
-      },
-      "block_order": [
-        "fanzine_page_zcG6wJ"
-      ],
       "settings": {
         "badge_text": "El Valor Agregado: Fanzine de Culto",
         "heading": "Mirloz, el sabor de los saberes",
