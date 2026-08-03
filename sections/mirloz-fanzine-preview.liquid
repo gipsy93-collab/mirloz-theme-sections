@@ -67,28 +67,11 @@
                 </div>
 
                 <!-- Illustration / Widget Area -->
-                <div class="fanzine-page-illustration w-full h-36">
+                <div class="fanzine-page-illustration w-full flex-1 min-h-0">
                   {% if block.settings.illustration_image != blank %}
-                    <img src="{{ block.settings.illustration_image | image_url: width: 400 }}" alt="{{ block.settings.title }}" class="w-full h-full object-cover rounded border border-[var(--color-mirloz-border)]" />
-                  {% else %}
-                    <div class="w-full h-full flex items-center justify-center bg-black/40 border border-[var(--color-mirloz-border)] rounded text-xs font-mono text-[var(--color-mirloz-muted)] p-4">
-                      {{ block.settings.illustration_html }}
-                    </div>
+                    <img src="{{ block.settings.illustration_image | image_url: width: 400 }}" alt="{{ block.settings.title }}" class="w-full h-full object-contain rounded" />
                   {% endif %}
                 </div>
-
-                {% if block.settings.pdf_link != blank %}
-                  <div class="mt-4 pt-3 border-t border-[var(--color-mirloz-border)]/40">
-                    <a
-                      href="{{ block.settings.pdf_link }}"
-                      target="_blank"
-                      class="inline-flex items-center gap-1.5 font-mono text-[10px] text-[var(--color-mirloz-gold)] hover:text-[var(--color-mirloz-gold-light)] transition-colors no-underline"
-                    >
-                      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
-                      {{ block.settings.pdf_label }}
-                    </a>
-                  </div>
-                {% endif %}
               </div>
             {% endfor %}
           </div>
@@ -342,24 +325,7 @@
         {
           "type": "image_picker",
           "id": "illustration_image",
-          "label": "Illustration Image"
-        },
-        {
-          "type": "html",
-          "id": "illustration_html",
-          "label": "Custom HTML/SVG Diagram (Fallback)",
-          "default": "<div style='text-align:center;'>Diagrama Fanzine</div>"
-        },
-        {
-          "type": "text",
-          "id": "pdf_label",
-          "label": "Texto del enlace PDF",
-          "default": "Descargar PDF"
-        },
-        {
-          "type": "url",
-          "id": "pdf_link",
-          "label": "Enlace al PDF"
+          "label": "Imagen de la página"
         }
       ]
     }
@@ -373,8 +339,7 @@
           "settings": {
             "title": "MIRLOZ FANZINE",
             "subtitle": "Vol. I — La Ciencia del Café",
-            "content": "Abre este manual para explorar la física, biología y química detrás de cada sorbo. Un regalo impreso con cada bolsa de café.",
-            "illustration_html": "<div style='text-align:center; padding: 20px; font-weight: bold;'>[Portada Ilustrada]</div>"
+            "content": "Abre este manual para explorar la física, biología y química detrás de cada sorbo. Un regalo impreso con cada bolsa de café."
           }
         },
         {
@@ -382,8 +347,7 @@
           "settings": {
             "title": "01. Neurociencia",
             "subtitle": "El Bloqueo de la Adenosina",
-            "content": "La cafeína tiene una estructura molecular similar a la adenosina. Al unirse a sus receptores, actúa como un escudo protector contra el cansancio.",
-            "illustration_html": "<div style='text-align:center;'>CH3-N-C=O ⇄ Adenosina</div>"
+            "content": "La cafeína tiene una estructura molecular similar a la adenosina. Al unirse a sus receptores, actúa como un escudo protector contra el cansancio."
           }
         }
       ]
