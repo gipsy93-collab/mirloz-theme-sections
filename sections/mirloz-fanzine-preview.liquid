@@ -76,6 +76,19 @@
                     </div>
                   {% endif %}
                 </div>
+
+                {% if block.settings.pdf_link != blank %}
+                  <div class="mt-4 pt-3 border-t border-[var(--color-mirloz-border)]/40">
+                    <a
+                      href="{{ block.settings.pdf_link }}"
+                      target="_blank"
+                      class="inline-flex items-center gap-1.5 font-mono text-[10px] text-[var(--color-mirloz-gold)] hover:text-[var(--color-mirloz-gold-light)] transition-colors no-underline"
+                    >
+                      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+                      {{ block.settings.pdf_label }}
+                    </a>
+                  </div>
+                {% endif %}
               </div>
             {% endfor %}
           </div>
@@ -336,6 +349,17 @@
           "id": "illustration_html",
           "label": "Custom HTML/SVG Diagram (Fallback)",
           "default": "<div style='text-align:center;'>Diagrama Fanzine</div>"
+        },
+        {
+          "type": "text",
+          "id": "pdf_label",
+          "label": "Texto del enlace PDF",
+          "default": "Descargar PDF"
+        },
+        {
+          "type": "url",
+          "id": "pdf_link",
+          "label": "Enlace al PDF"
         }
       ]
     }
