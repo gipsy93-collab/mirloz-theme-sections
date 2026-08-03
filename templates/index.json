@@ -12,10 +12,10 @@
     "hero": {
       "type": "mirloz-hero",
       "settings": {
-        "badge_text": "Edición Limitada — 50 Unidades",
+        "badge_text": "Primera edición— 50 Unidades de lanzamiento",
         "heading": "Mirloz",
-        "text": "Café de especialidad colombiano que no solo se bebe, también se lee.  \nMirloz nace del diálogo entre saberes y la memoria que guarda el grano: ciencia, cultivo y sensibilidad del origen.",
-        "button_1_text": "Lo quiero",
+        "text": "Café de especialidad colombiano que no solo se bebe, también se lee.  \nMirloz hace que los saberes y la ciencia sean abiertos; promueve el diálogo entre el conocimiento y la memoria que se comparten mientras se disfruta una taza de café.\nPrueba Mirloz, el sabor de los saberes.",
+        "button_1_text": "Lo quiero probar",
         "button_1_link": "",
         "button_2_text": "Nuestra Metáfora",
         "button_2_link": "",
@@ -28,16 +28,31 @@
     },
     "fanzine_preview": {
       "type": "mirloz-fanzine-preview",
+      "blocks": {
+        "fanzine_page_zcG6wJ": {
+          "type": "fanzine_page",
+          "settings": {
+            "subtitle": "Vol. I — La Ciencia del Café",
+            "title": "",
+            "content": "",
+            "illustration_image": "shopify://shop_images/1785714750835.png",
+            "illustration_html": ""
+          }
+        }
+      },
+      "block_order": [
+        "fanzine_page_zcG6wJ"
+      ],
       "settings": {
         "badge_text": "El Valor Agregado: Fanzine de Culto",
-        "heading": "Un Fanzine Científico como puente al asombro.",
-        "description_accent": "EL PICO DE FUEGO DEL MIRLO — El contraste de la ciencia brillante en un paquete negro misterioso.",
+        "heading": "Mirloz, el sabor de los saberes",
+        "description_accent": "",
         "tag_1": "Fanzine Impreso",
         "tag_2": "Ciencia Abierta",
         "tag_3": "Ilustrado",
         "book_footer_left": "Café Mirloz • Edición I",
         "right_heading": "El saber florece en las sombras del bosque.",
-        "right_text": "<p>El fanzine es nuestra manera de escarbar las hojas superficiales, tal como lo hace el <strong>Mirlo</strong> en el bosque, para buscar la esencia y la verdad de las cosas. Con cada lote del café, recibirás un volumen exclusivo ilustrado en papel reciclado.</p>",
+        "right_text": "<p>En Mirloz, el café no solo se bebe: también se lee. Hemos diseñado una experiencia donde el sabor se encuentra con el pensamiento. Con cada edición de café, recibirás un fanzine exclusivo: una curaduría física que abre puertas a saberes científicos o conocimientos ancestrales.</p><p>Prepara tu método favorito, abre el fanzine y transforma tu pausa diaria en un momento de aprendizaje.</p>",
         "feature_1_icon": "🧠",
         "feature_1_title": "El cerebro y la cafeína",
         "feature_1_topic": "Neurociencia",
@@ -45,15 +60,11 @@
         "feature_2_icon": "🔬",
         "feature_2_title": "Microorganismos invisibles",
         "feature_2_topic": "Biología",
-        "feature_2_desc": "Levaduras y bacterias transforman el mucílago del grano en compuestos volátiles. Un ecosistema microscópico que define la acidez."
-      }
-    },
-    "fanzine_showcase": {
-      "type": "mirloz-fanzine-showcase",
-      "settings": {
-        "badge_text": "La Colección",
-        "heading": "Vitrina de Fanzines",
-        "subheading": "Explora los diferentes volúmenes que hemos editado. Ciencia, arte y cultura general para acompañar tus tazas diarias."
+        "feature_2_desc": "Levaduras y bacterias transforman el mucílago del grano en compuestos volátiles. Un ecosistema microscópico que define la acidez.",
+        "button_1_text": "Comprar ahora",
+        "button_1_link": "",
+        "button_2_text": "Ver colección",
+        "button_2_link": ""
       }
     },
     "story": {
@@ -61,10 +72,10 @@
       "settings": {
         "badge_text": "Nuestra Esencia",
         "heading": "Un homenaje familiar hecho café y ciencia.",
-        "story_richtext": "<p>El nombre <strong>Mirloz</strong> nace de la unión de dos pilares esenciales: el nombre de mi madre, <strong>Mirian</strong>, y el apellido de mi padre, <strong>López</strong>. Es un tributo a nuestras raíces, al amor por la tierra y al esfuerzo de nuestra herencia.</p><p>Pero el nombre también juega con el <strong>Mirlo</strong>, esa ave audaz y curiosa del bosque. Decidimos llevar este paralelismo a cada aspecto de nuestro café de especialidad, convirtiendo la taza en una experiencia tan profunda y libre como el vuelo del ave.</p>",
+        "story_richtext": "<p>El nombre <strong>Mirloz</strong> nace de la unión de dos pilares esenciales: el nombre de mi madre, <em>Mirian</em>, y el apellido de mi padre, <em>Lozano</em>. Es un tributo a nuestras raíces, al amor por la tierra y al esfuerzo de una herencia que también hizo ciencia sin saberlo.</p><p>Pero <strong>Mirloz</strong> también evoca al <strong>mirlo</strong>, esa ave audaz y curiosa del bosque. Su canto y su mirada inspiran nuestra forma de entender el café: una experiencia profunda, libre y consciente, donde cada taza celebra el vuelo del conocimiento y la memoria.</p>",
         "story_image": "shopify://shop_images/CANASTO_CAFE.jpg",
-        "image_title": "El Vuelo de Nuestras Raíces",
-        "image_subtitle": "Mirian + López = Mirloz",
+        "image_title": "",
+        "image_subtitle": "Caficultores en el departamento del Quindío, Colombia a 200 metros sobre el nivel del mar.",
         "metaphor_heading": "La Metáfora del Mirlo",
         "metaphor_subheading": "¿Cómo se traduce el ave en cada sorbo de Café Mirloz?",
         "card_1_icon": "✨",
@@ -75,11 +86,16 @@
         "card_2_desc": "El canto del mirlo es melódico, complejo e improvisado, adaptándose al amanecer y atardecer. Así es el perfil de nuestro café: notas frutales y achocolatadas que cambian y deleitan al paladar, ofreciendo una sinfonía única en cada taza.",
         "card_3_icon": "🔍",
         "card_3_title": "Curiosidad Terrenal",
-        "card_3_desc": "El mirlo es inteligente y curioso, escarbando las hojas secas del suelo para encontrar alimento. Nuestro proyecto emula esa búsqueda incansable del conocimiento, investigando y divulgando ciencia en un fanzine físico exclusivo de regalo."
+        "card_3_desc": "El mirlo es inteligente y curioso, escarbando las hojas secas del suelo para encontrar alimento. Nuestro proyecto emula esa búsqueda incansable del conocimiento, investigando y divulgando ciencia en un fanzine físico exclusivo de regalo.",
+        "button_1_text": "Conocer más",
+        "button_1_link": "",
+        "button_2_text": "Ver fanzines",
+        "button_2_link": ""
       }
     },
     "blog": {
       "type": "mirloz-blog",
+      "disabled": true,
       "settings": {
         "badge_text": "Bitácora",
         "heading": "Café, Ciencia y Cultura",
@@ -108,7 +124,6 @@
   "order": [
     "hero",
     "fanzine_preview",
-    "fanzine_showcase",
     "story",
     "blog",
     "cta"
